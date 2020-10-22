@@ -1,0 +1,23 @@
+.Login {
+	height: 100vh;
+	.Form {
+
+	}
+
+	.Side {
+		background-color: dodgerblue;
+		padding: 0 12.5em;
+		position: relative;
+		
+		&::after {
+			content: " ";
+			position: absolute;
+			z-index: -10;
+			background-image: url('./../assets/hi.svg');
+		}
+	}
+}
+
+.FormLogin {
+	margin: 0 6em;
+}
