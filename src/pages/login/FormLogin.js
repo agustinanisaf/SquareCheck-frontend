@@ -6,8 +6,8 @@ import classes from './Login.module.scss'
 
 const input = [
 	{
-		id : "username",
-		label : "Username",
+		id : "email",
+		label : "Email",
 		type: "email"
 	},
 	{
@@ -20,7 +20,7 @@ const input = [
 const FormLogin = () => {
 	return (
 		<div className={classes.FormLogin}>
-			<Typography variant="h3" style={{fontWeight: "500"}}>Selamat Datang</Typography>
+			<Typography variant="h3" style={{fontWeight: "500"}}>Selamat<br/> Datang</Typography>
 
 			<Form
 				fullWidth
