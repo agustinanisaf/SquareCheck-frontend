@@ -2,6 +2,7 @@ import React from "react";
 import classes from "./Login.module.scss";
 import { Grid, Typography, Paper } from "@material-ui/core";
 import FormLogin from "./FormLogin";
+import {COLORS} from './../../constants'
 
 const Login = () => {
   return (
@@ -23,6 +24,7 @@ const Login = () => {
         container
         justify="center"
         direction="column"
+        style={{backgroundColor: `${COLORS.secondary}`}}
         className={classes.Side}
       >
         <Typography

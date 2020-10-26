@@ -43,12 +43,12 @@ theme = responsiveFontSizes(theme)
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      {/* <div>
+      <div>
         <Switch>
           <Route path="/" component={Login} />
         </Switch>
-      </div> */}
-      <Layout></Layout>
+      </div>
+      {/* <Layout></Layout> */}
     </ThemeProvider>
   );
 }
