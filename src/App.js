@@ -20,7 +20,7 @@ const montserrat = {
 
 let theme = createMuiTheme({
   typography: {
-    fontFamily: 'Montserrat'
+    fontFamily: "Montserrat",
   },
   palette: {
     primary: {
@@ -29,13 +29,16 @@ let theme = createMuiTheme({
       dark: "#01579B",
       contrastText: "#ffffff",
     },
+    text: {
+      primary: "#444444",
+    },
   },
   status: {
     hadir: "#00B152",
     telat: "#454E9E",
     izin: "#F3AA00",
     alpa: "#DB504A",
-  }
+  },
 });
 
 theme = responsiveFontSizes(theme)
