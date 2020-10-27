@@ -1,0 +1,19 @@
+.Sidebar {
+    height: 100vh;
+
+    .info {
+        margin-top: 1.5em;
+    }
+
+    .logo {
+        position: fixed;
+        left: -30px;
+        bottom: -50px;
+        height: 200px;
+        transform: rotate(15deg);
+    }
+}
+
+.font {
+    color: white;
+}

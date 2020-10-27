@@ -8,6 +8,7 @@ import {
   ThemeProvider,
 } from "@material-ui/core/styles";
 import Montserrat from "./assets/Montserrat-Regular.ttf";
+import Layout from "./components/Layout";
 
 const montserrat = {
   fontFamily: 'Montserrat',
@@ -47,6 +48,7 @@ function App() {
           <Route path="/" component={Login} />
         </Switch>
       </div>
+      <Layout></Layout>
     </ThemeProvider>
   );
 }
