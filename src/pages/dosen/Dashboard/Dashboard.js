@@ -2,27 +2,28 @@ import React from 'react';
 import { Grid, Paper, Card, Typography } from '@material-ui/core'
 import classes from './Dashboard.module.scss'
 import CardComponent from './Card' 
+import {COLORS} from './../../../constants'
 
 const fakeData = [
   {
     name: "Hadir",
     amount: 100,
-    color: "hadir",
+    color: COLORS.status.hadir,
   },
   {
     name: "Izin",
     amount: 8,
-    color: "izin",
+    color: COLORS.status.izin,
   },
   {
     name: "Terlambat",
     amount: 12,
-    color: "terlambat",
+    color: COLORS.status.telat,
   },
   {
     name: "Alpa",
     amount: 2,
-    color: "alpa",
+    color: COLORS.status.alpa,
   },
 ];
 

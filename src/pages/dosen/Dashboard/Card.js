@@ -1,8 +1,8 @@
 import React from 'react';
 import { Card, Grid, CardContent, Typography, Paper } from '@material-ui/core'
 import classes from './Dashboard.module.scss'
-
-
+import {Link} from 'react-router-dom'
+import {COLORS} from './../../../constants'
 
 const CardComponent = ({data}) => {
     return (
@@ -10,7 +10,10 @@ const CardComponent = ({data}) => {
         <CardContent component={Grid} container>
           <Grid item xs={12} container>
             <Grid item xs={8}>
-              <Typography style={{ fontWeight: "700", lineHeight: "1.2em"}} gutterBottom>
+              <Typography
+                style={{ fontWeight: "700", lineHeight: "1.2em" }}
+                gutterBottom
+              >
                 Mobile Programming
               </Typography>
             </Grid>
@@ -32,12 +35,13 @@ const CardComponent = ({data}) => {
                 xs={3}
                 key={i}
                 component={Paper}
+                square
                 style={{ padding: ".5em 0" }}
               >
                 <Typography
                   align="center"
                   variant="h4"
-                  style={{ color: `${key.color}` }}
+                  style={{ color: `${key.color}`, fontWeight: "700" }}
                 >
                   {key.amount}
                 </Typography>
@@ -52,10 +56,23 @@ const CardComponent = ({data}) => {
               </Grid>
             ))}
           </Grid>
-          <Grid item component={Typography} align="right" variant="caption">
-            see more
+          <Grid
+            item
+            align="right"
+            xs={12}
+            style={{ paddingTop: ".5em" }}
+          >
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <Typography
+                variant="caption"
+                style={{ color: `${COLORS.secondaryLight}` }}
+              >
+                see more
+              </Typography>
+            </Link>
           </Grid>
         </CardContent>
+        {/* <Card */}
       </Grid>
     );
 }
