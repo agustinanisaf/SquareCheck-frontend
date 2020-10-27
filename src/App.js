@@ -48,7 +48,7 @@ function App() {
           <Route path="/" component={Login} />
         </Switch>
       </div>
-      {/* <Layout></Layout> */}
+      <Layout></Layout>
     </ThemeProvider>
   );
 }
