@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core/styles";
 import Montserrat from "./assets/Montserrat-Regular.ttf";
 import Dashboard from './pages/dosen/Dashboard/Dashboard'
+import ListMataKuliah from './pages/dosen/ListMataKuliah/ListMataKuliah'
 
 const montserrat = {
   fontFamily: 'Montserrat',
@@ -45,13 +46,14 @@ theme = responsiveFontSizes(theme)
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+     <ThemeProvider theme={theme}>
       {/* <div>
         <Switch>
           <Route path="/" component={Login} />
         </Switch>
       </div> */}
-      <Dashboard/>
+      {/* <Dashboard/> */}
+      <ListMataKuliah/>
     </ThemeProvider>
   );
 }
