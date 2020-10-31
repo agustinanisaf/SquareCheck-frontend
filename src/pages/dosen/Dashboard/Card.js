@@ -5,8 +5,8 @@ import {Link} from 'react-router-dom'
 import {COLORS} from './../../../constants'
 
 const CardComponent = ({data}) => {
-    return (
-      <Grid container component={Card} className={classes.CardComponent}>
+  return (
+    <Grid container component={Paper} elevation={4} className={classes.CardComponent}>
         <CardContent component={Grid} container>
           <Grid item xs={12} container>
             <Grid item xs={8}>

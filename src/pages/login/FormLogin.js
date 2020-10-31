@@ -35,6 +35,7 @@ const FormLogin = () => {
 					variant="filled"
 					margin="normal"
 					size="small"
+					InputLabelProps={{style: {color: '#999999'}}}
 					fullWidth />
 				))}
 

@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core/styles";
 import Montserrat from "./assets/Montserrat-Regular.ttf";
 import Dashboard from './pages/dosen/Dashboard/Dashboard'
+import Layout from './components/Layout'
 
 const montserrat = {
   fontFamily: 'Montserrat',
@@ -31,6 +32,7 @@ let theme = createMuiTheme({
     },
     text: {
       primary: "#444444",
+      secondary: "#fff"
     },
   },
   status: {
@@ -46,12 +48,13 @@ theme = responsiveFontSizes(theme)
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      {/* <div>
+      <div>
         <Switch>
-          <Route path="/" component={Login} />
+          <Route exact path="/" component={Login} />
+          <Route exact path="/dosen" component={Layout} />
         </Switch>
-      </div> */}
-      <Dashboard/>
+      </div>
+      {/* <Dashboard/> */}
     </ThemeProvider>
   );
 }
