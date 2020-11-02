@@ -2,15 +2,17 @@ import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import {
-  CssBaseline, Grid, Drawer,
-  Hidden, IconButton, Toolbar,
-  Typography
+  CssBaseline,
+  Grid,
+  Drawer,
+  Hidden,
+  IconButton,
+  Toolbar,
+  Typography,
 } from "@material-ui/core";
-import {Menu as MenuIcon} from "@material-ui/icons"
+import { Menu as MenuIcon } from "@material-ui/icons";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Dashboard from './../pages/dosen/Dashboard/Dashboard'
-import { Route, Switch } from 'react-router-dom'
-import Sidebar from './Sidebar/Sidebar'
+import Sidebar from "./Sidebar/Sidebar";
 
 const drawerWidth = 220;
 
@@ -48,13 +50,14 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(7),
+    // height: 
   },
   icon: {
-    color: "white"
-  }
+    color: "white",
+  },
 }));
 
-function ResponsiveDrawer(props) {
+export default function ResponsiveDrawer(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -119,10 +122,8 @@ function ResponsiveDrawer(props) {
       </nav>
       <Grid className={classes.content} spacing={4}>
         <div className={classes.toolbar} />
-        {/* Route for */}
-        <Switch>
-
-        </Switch>
+        {/* Route for dosen*/}
+        {props.children}
       </Grid>
     </div>
   );
@@ -135,5 +136,3 @@ ResponsiveDrawer.propTypes = {
    */
   window: PropTypes.func,
 };
-
-export default ResponsiveDrawer;

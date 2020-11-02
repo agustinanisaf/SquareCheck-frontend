@@ -25,7 +25,7 @@ const navList = [
   },
   {
     name: "Logout",
-    path: "/logout",
+    path: "/login",
     icon: <ExitToApp />,
   },
 ];

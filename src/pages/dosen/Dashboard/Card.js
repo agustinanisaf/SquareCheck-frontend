@@ -32,6 +32,7 @@ const CardComponent = ({data}) => {
                 item
                 justify="center"
                 direction="column"
+                alignItems="center"
                 xs={3}
                 key={i}
                 component={Paper}
@@ -48,7 +49,7 @@ const CardComponent = ({data}) => {
                 <Typography
                   gutterBottom
                   align="center"
-                  variant="body2"
+                  variant="caption"
                   color={key.color}
                 >
                   {key.name}

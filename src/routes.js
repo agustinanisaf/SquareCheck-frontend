@@ -1,18 +1,24 @@
 import Login from './pages/login/Login'
-import Dosen from './pages/dosen'
+import { Dashboard as DosenDashboard } from './pages/dosen'
+import Layout from './components/Layout'
+import { Dashboard } from '@material-ui/icons';
 
-export const MAIN_ROUTES = [
-    {
-        name: "Login",
-        path: "/login",
-        component: Login,
-        exact: true,
-        restricted: true
-    }, {
-        name: "Dosen",
-        path: "/",
-        exact: true,
-        component: Dosen,
-        private: true,
-    }
-]
+export const PUBLIC_ROUTES = [
+  {
+    name: "Login",
+    path: "/login",
+    component: Login,
+    exact: true,
+    restricted: true,
+  },
+];
+
+export const DOSEN_ROUTES = [
+  {
+    name: "Dosen",
+    path: "/",
+    exact: true,
+    component: DosenDashboard,
+    private: true,
+  },
+];
