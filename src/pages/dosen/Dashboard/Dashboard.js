@@ -29,7 +29,7 @@ const fakeData = [
 
 const Dashboard = () => {
     return (
-        <Grid container className={classes.Dashboard}>
+        <Grid container className={classes.Dashboard} spacing={4}>
             {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => (
                 <Grid key={i} md={4} sm={6} item className={classes.Card}>
                     <CardComponent data={fakeData}/>
