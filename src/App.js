@@ -1,23 +1,24 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
-import Login from "./pages/login/Login";
 import {
   createMuiTheme,
   responsiveFontSizes,
   ThemeProvider,
 } from "@material-ui/core/styles";
 import Montserrat from "./assets/Montserrat-Regular.ttf";
-import Dashboard from './pages/dosen/Dashboard/Dashboard'
-import ListMataKuliah from './pages/dosen/ListMataKuliah/ListMataKuliah'
+import { PublicRoute, PrivateRoute } from "./components/componentRoutes";
+import { CookiesProvider } from "react-cookie";
+import Layout from "./components/Layout";
+import { DOSEN_ROUTES, PUBLIC_ROUTES } from "./routes";
 
 const montserrat = {
-  fontFamily: 'Montserrat',
-  fontStyle: 'normal',
-  fontDisplay: 'swap',
+  fontFamily: "Montserrat",
+  fontStyle: "normal",
+  fontDisplay: "swap",
   fontWeight: 400,
-  src: `url(${Montserrat}) format('truetype)`
-}
+  src: `url(${Montserrat}) format('truetype)`,
+};
 
 let theme = createMuiTheme({
   typography: {
@@ -32,6 +33,7 @@ let theme = createMuiTheme({
     },
     text: {
       primary: "#444444",
+      secondary: "#fff",
     },
   },
   status: {
@@ -42,19 +44,36 @@ let theme = createMuiTheme({
   },
 });
 
-theme = responsiveFontSizes(theme)
+theme = responsiveFontSizes(theme);
 
 function App() {
   return (
-     <ThemeProvider theme={theme}>
-      {/* <div>
-        <Switch>
-          <Route path="/" component={Login} />
-        </Switch>
-      </div> */}
-      {/* <Dashboard/> */}
-      <ListMataKuliah/>
+    // <CookiesProvider>
+    <ThemeProvider theme={theme}>
+      <Switch>
+        {PUBLIC_ROUTES.map((val) => (
+          <PublicRoute
+            key={val.name}
+            path={val.path}
+            exact={val.exact}
+            component={val.component}
+            restricted={val.restricted}
+          />
+        ))}
+        <Layout>
+          {DOSEN_ROUTES.map((val) => (
+            <PrivateRoute
+              key={val.nam}
+              path={val.path}
+              exact={val.exact}
+              component={val.component}
+              private={val.private}
+            />
+          ))}
+        </Layout>
+      </Switch>
     </ThemeProvider>
+    // </CookiesProvider>
   );
 }
 

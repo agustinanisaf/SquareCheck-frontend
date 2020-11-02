@@ -10,8 +10,10 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "chart.js": "^2.9.4",
+    "js-cookie": "^2.2.1",
     "node-sass": "^4.14.1",
     "react": "^16.14.0",
+    "react-cookie": "^4.0.3",
     "react-dom": "^16.14.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3"
