@@ -13,6 +13,7 @@ import {
 import { Menu as MenuIcon } from "@material-ui/icons";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Sidebar from "./Sidebar/Sidebar";
+import Breadcrumbs from './Sidebar/Breadcrumbs'
 
 const drawerWidth = 220;
 
@@ -84,9 +85,14 @@ export default function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Square Checks
-          </Typography>
+          <Hidden smUp>
+            <Typography variant="h6" noWrap>
+              Square Checks
+            </Typography>
+          </Hidden>
+          <Hidden smDown>
+            <Breadcrumbs/>
+          </Hidden>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">

@@ -15,8 +15,8 @@ export const PUBLIC_ROUTES = [
 
 export const DOSEN_ROUTES = [
   {
-    name: "Dosen",
-    path: "/",
+    name: "Home",
+    path: "/home",
     exact: true,
     component: DosenDashboard,
     private: true,

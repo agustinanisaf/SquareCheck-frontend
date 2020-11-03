@@ -10,7 +10,7 @@ import { Home, Event, ExitToApp, Assignment} from '@material-ui/icons'
 const navList = [
   {
     name: "Home",
-    path: "/",
+    path: "/home",
     icon: <Home />,
   },
   {
