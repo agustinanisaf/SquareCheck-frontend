@@ -38,7 +38,7 @@ const FormLogin = () => {
 		}
 		login(data)
 		console.log(Cookie.get('user'))
-    history.push("/");
+    history.push("/home");
   };
 
   return (
@@ -57,6 +57,7 @@ const FormLogin = () => {
             variant="filled"
             margin="normal"
             size="small"
+            required
             onChange={list.onChange}
             InputLabelProps={{ style: { color: "#999999" } }}
             fullWidth

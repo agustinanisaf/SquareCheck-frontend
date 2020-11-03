@@ -1,7 +1,8 @@
 import Login from './pages/login/Login'
-import { Dashboard as DosenDashboard } from './pages/dosen'
-import Layout from './components/Layout'
-import { Dashboard } from '@material-ui/icons';
+import {
+  Dashboard as DosenDashboard,
+  ListMatakuliah
+} from './pages/dosen'
 
 export const PUBLIC_ROUTES = [
   {
@@ -15,10 +16,17 @@ export const PUBLIC_ROUTES = [
 
 export const DOSEN_ROUTES = [
   {
-    name: "Dosen",
-    path: "/",
+    name: "Home",
+    path: "/home",
     exact: true,
     component: DosenDashboard,
+    private: true,
+  },
+  {
+    name: "Matakuliah",
+    path: "/matakuliah",
+    exact: true,
+    component: ListMatakuliah,
     private: true,
   },
 ];

@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./Login.module.scss";
-import { Grid, Typography, Paper } from "@material-ui/core";
+import { Grid, Typography, Hidden } from "@material-ui/core";
 import FormLogin from "./FormLogin";
 import {COLORS} from './../../constants'
 
@@ -9,7 +9,8 @@ const Login = () => {
     <Grid container direction="row" spacing={0} className={classes.Login}>
       <Grid
         item
-        xs={4}
+        xs={12}
+        sm={4}
         container
         justify="center"
         direction="column"
@@ -18,33 +19,35 @@ const Login = () => {
         
         <FormLogin />
       </Grid>
-      <Grid
-        item
-        xs={8}
-        container
-        justify="center"
-        direction="column"
-        style={{backgroundColor: `${COLORS.secondary}`}}
-        className={classes.Side}
-      >
-        <Typography
-          variant="h2"
-          style={{ fontWeight: "600", color: "white", lineHeight: "1em" }}
+      <Hidden smDown>
+        <Grid
+          item
+          sm={8}
+          container
+          justify="center"
+          direction="column"
+          style={{backgroundColor: `${COLORS.secondary}`}}
+          className={classes.Side}
         >
-          Absen
-          <br /> Tanpa Ribet
-        </Typography>
-        <Typography
-          variant="h6"
-          style={{ fontWeight: "400", color: "white", paddingTop: "1.5em" }}
-        >
-          Ingin aplikasi absensi yang mudah dan cepat? Square Checks solusi
-          untuk Anda dengan fitur One-Click absen dan reminder ketika presensi
-          kelas sudah dibuka serta dilengkapi dengan rekap absensi yang dapat
-          diekspor ke PDF.
-        </Typography>
-				<div className={classes.image}></div>
-      </Grid>
+          <Typography
+            variant="h2"
+            style={{ fontWeight: "600", color: "white", lineHeight: "1em" }}
+          >
+            Absen
+            <br /> Tanpa Ribet
+          </Typography>
+          <Typography
+            variant="h6"
+            style={{ fontWeight: "400", color: "white", paddingTop: "1.5em" }}
+          >
+            Ingin aplikasi absensi yang mudah dan cepat? Square Checks solusi
+            untuk Anda dengan fitur One-Click absen dan reminder ketika presensi
+            kelas sudah dibuka serta dilengkapi dengan rekap absensi yang dapat
+            diekspor ke PDF.
+          </Typography>
+          <div className={classes.image}></div>
+        </Grid>
+      </Hidden>
     </Grid>
   );
 };
