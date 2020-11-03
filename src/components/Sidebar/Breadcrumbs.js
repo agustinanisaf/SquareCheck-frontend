@@ -22,7 +22,7 @@ export default function MyBreadcrumbs() {
                   key={to}
                   style={{ textTransform: "capitalize" }}
                 >
-                  {value}
+                  {value == "/" ? "home" : value}
                 </Typography>
               ) : (
                 <RouterLink
