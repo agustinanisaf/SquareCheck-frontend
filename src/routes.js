@@ -1,7 +1,8 @@
 import Login from './pages/login/Login'
 import {
   Dashboard as DosenDashboard,
-  ListMatakuliah
+  ListMatakuliah,
+  DetailMatakuliah
 } from './pages/dosen'
 
 export const PUBLIC_ROUTES = [
@@ -27,6 +28,13 @@ export const DOSEN_ROUTES = [
     path: "/matakuliah",
     exact: true,
     component: ListMatakuliah,
+    private: true,
+  },
+  {
+    name: "Kalender",
+    path: "/kalender",
+    exact: true,
+    component: DetailMatakuliah,
     private: true,
   },
 ];

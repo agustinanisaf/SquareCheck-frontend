@@ -63,7 +63,7 @@ function App() {
         <Layout>
           {DOSEN_ROUTES.map((val) => (
             <PrivateRoute
-              key={val.nam}
+              key={val.name}
               path={val.path}
               exact={val.exact}
               component={val.component}

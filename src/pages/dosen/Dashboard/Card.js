@@ -33,14 +33,14 @@ const CardComponent = ({data}) => {
           </Typography>
         </Grid>
         <Grid container item xs={12} style={{ marginTop: "1em" }}>
-          {data.map((key, i) => (
+          {data.map((key, index) => (
             <Grid
+              container
               item
               justify="center"
               direction="column"
-              alignItems="center"
               xs={3}
-              key={i}
+              key={index}
               component={Paper}
               square
               style={{ padding: ".5em 0" }}
@@ -56,7 +56,6 @@ const CardComponent = ({data}) => {
                 gutterBottom
                 align="center"
                 style={{ fontSize: ".8em" }}
-                color={key.color}
               >
                 {key.name}
               </Typography>
