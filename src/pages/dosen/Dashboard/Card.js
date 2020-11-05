@@ -4,7 +4,7 @@ import classes from './Dashboard.module.scss'
 import {Link} from 'react-router-dom'
 import {COLORS} from './../../../constants'
 
-const CardComponent = ({data}) => {
+const CardComponent = ({ data }) => {
   return (
     <Grid
       container
@@ -63,7 +63,7 @@ const CardComponent = ({data}) => {
           ))}
         </Grid>
         <Grid item align="right" xs={12} style={{ paddingTop: ".5em" }}>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to={`/matakuliah/${1}`} style={{ textDecoration: "none" }}>
             <Typography
               variant="caption"
               style={{ color: `${COLORS.secondaryLight}` }}

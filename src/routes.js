@@ -31,8 +31,8 @@ export const DOSEN_ROUTES = [
     private: true,
   },
   {
-    name: "Kalender",
-    path: "/kalender",
+    name: "Detail Matakuliah",
+    path: "/matakuliah/:id",
     exact: true,
     component: DetailMatakuliah,
     private: true,
