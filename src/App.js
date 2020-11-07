@@ -2,6 +2,8 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/login/Login";
+import Presence from "./pages/presence/Presence";
+
 import {
   createMuiTheme,
   responsiveFontSizes,
@@ -44,7 +46,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <div>
         <Switch>
-          <Route path="/" component={Login} />
+          <Route path="/" component={Presence} />
+          <Route path="/presence" component={Presence} />
         </Switch>
       </div>
     </ThemeProvider>
