@@ -4,7 +4,7 @@ import {NavigateNext} from '@material-ui/icons'
 
 export default function CardComponent() {
     return (
-      <Grid item container component={Card}>
+      <Grid item container xs={12} sm={6} md={4} component={Card}>
         <CardContent component={Grid} item container alignContent="center">
           <Grid item xs={10} container>
             <Grid item xs={12}>
