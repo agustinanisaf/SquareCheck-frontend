@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Card, Typography } from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 import classes from './Dashboard.module.scss'
 import CardComponent from './Card' 
 import {COLORS} from './../../../constants'

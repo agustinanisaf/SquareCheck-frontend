@@ -4,7 +4,7 @@ import classes from './Dashboard.module.scss'
 import {Link} from 'react-router-dom'
 import {COLORS} from './../../../constants'
 
-const CardComponent = ({data}) => {
+const CardComponent = ({ data }) => {
   return (
     <Grid
       container
@@ -33,14 +33,14 @@ const CardComponent = ({data}) => {
           </Typography>
         </Grid>
         <Grid container item xs={12} style={{ marginTop: "1em" }}>
-          {data.map((key, i) => (
+          {data.map((key, index) => (
             <Grid
+              container
               item
               justify="center"
               direction="column"
-              alignItems="center"
               xs={3}
-              key={i}
+              key={index}
               component={Paper}
               square
               style={{ padding: ".5em 0" }}
@@ -56,7 +56,6 @@ const CardComponent = ({data}) => {
                 gutterBottom
                 align="center"
                 style={{ fontSize: ".8em" }}
-                color={key.color}
               >
                 {key.name}
               </Typography>
@@ -64,7 +63,7 @@ const CardComponent = ({data}) => {
           ))}
         </Grid>
         <Grid item align="right" xs={12} style={{ paddingTop: ".5em" }}>
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to={`/matakuliah/${1}`} style={{ textDecoration: "none" }}>
             <Typography
               variant="caption"
               style={{ color: `${COLORS.secondaryLight}` }}
