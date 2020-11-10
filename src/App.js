@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import "./App.css";
 import {
   createMuiTheme,
@@ -8,7 +8,6 @@ import {
 } from "@material-ui/core/styles";
 import Montserrat from "./assets/Montserrat-Regular.ttf";
 import { PublicRoute, PrivateRoute } from "./components/componentRoutes";
-import { CookiesProvider } from "react-cookie";
 import Layout from "./components/Layout";
 import { DOSEN_ROUTES, PUBLIC_ROUTES } from "./routes";
 
@@ -48,7 +47,6 @@ theme = responsiveFontSizes(theme);
 
 function App() {
   return (
-    // <CookiesProvider>
     <ThemeProvider theme={theme}>
       <Switch>
         {PUBLIC_ROUTES.map((val) => (
@@ -73,7 +71,6 @@ function App() {
         </Layout>
       </Switch>
     </ThemeProvider>
-    // </CookiesProvider>
   );
 }
 
