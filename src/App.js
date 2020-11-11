@@ -1,12 +1,7 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, {useState, useEffect} from "react";
+import axios from "axios";
+import { Switch, Router } from "react-router-dom";
 import "./App.css";
-<<<<<<< HEAD
-import Login from "./pages/login/Login";
-import Presence from "./pages/presence/Presence";
-
-=======
->>>>>>> 347599d69b062f0b822fed02ac12ed89d97ca269
 import {
   createMuiTheme,
   responsiveFontSizes,
@@ -52,11 +47,36 @@ let theme = createMuiTheme({
 
 theme = responsiveFontSizes(theme);
 
-function App() {
+function App() {    
   return (
+    
     // <CookiesProvider>
     <ThemeProvider theme={theme}>
-<<<<<<< HEAD
+      <Switch>
+        {PUBLIC_ROUTES.map((val) => (
+          <PublicRoute
+            key={val.name}
+            path={val.path}
+            exact={val.exact}
+            component={val.component}
+            restricted={val.restricted}
+          />
+        ))}
+        <Layout>
+          {DOSEN_ROUTES.map((val) => (
+            <PrivateRoute
+              key={val.name}
+              path={val.path}
+              exact={val.exact}
+              component={val.component}
+              private={val.private}
+            />
+          ))}
+        </Layout>
+      </Switch>
+    </ThemeProvider>
+    // </CookiesProvider>
+  );
 }
 
 export default App;
