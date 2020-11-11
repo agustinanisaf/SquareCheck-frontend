@@ -7,18 +7,14 @@ import {
 } from "@material-ui/core";
 import classes from "./Login.module.scss";
 import { useHistory } from "react-router-dom";
-import { login } from './../../utils/auth'
-import Cookie from 'js-cookie'
-import axios from 'axios'
+import { login } from "./../../utils/auth";
+import Cookie from "js-cookie";
+import { api } from "./../../utils/api";
 
 const FormLogin = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const history = useHistory();
-
-  useEffect(() => {
-    console.log(email)
-  }, [email]);
 
   const input = [
     {
@@ -35,15 +31,26 @@ const FormLogin = () => {
     },
   ];
 
-	const submit = (e) => {
-		e.preventDefault();
-		const data = {
-			user: email,
-			token: password
-		}
-		login(data)
-		console.log(Cookie.get('user'))
-    history.push("/home");
+  const submit = (e) => {
+    e.preventDefault();
+
+    const data = {
+      user: email,
+      password: password,
+    };
+
+    api
+      .post("/auth/login", data)
+      .then((res) => {
+        login(res.data);
+        history.push("/home");
+      })
+      .then(() => {
+        console.log(Cookie.get("user"));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
@@ -72,8 +79,8 @@ const FormLogin = () => {
         <Button
           color="primary"
           variant="contained"
-				  style={{ marginTop: "2em" }}
-				  onClick={submit}
+          style={{ marginTop: "2em" }}
+          onClick={submit}
         >
           Login
         </Button>
