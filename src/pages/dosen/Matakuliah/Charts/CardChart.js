@@ -7,7 +7,7 @@ export default function CardChart({ dataset, name, color }) {
     <Card style={{ backgroundColor: `${color}` }}>
       <CardContent>
         <Line
-          height={"25%"}
+          height={"20%"}
           data={dataset}
           options={{
             responsive: true,
