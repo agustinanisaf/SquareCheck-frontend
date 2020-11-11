@@ -2,7 +2,8 @@ import Login from './pages/login/Login'
 import {
   Dashboard as DosenDashboard,
   ListMatakuliah,
-  DetailMatakuliah
+  DetailMatakuliah,
+  Matakuliah
 } from './pages/dosen'
 
 export const PUBLIC_ROUTES = [
@@ -31,8 +32,15 @@ export const DOSEN_ROUTES = [
     private: true,
   },
   {
-    name: "Detail Matakuliah",
+    name: "Matakuliah",
     path: "/matakuliah/:id",
+    exact: true,
+    component: Matakuliah,
+    private: true,
+  },
+  {
+    name: "Detail Matakuliah",
+    path: "/matakuliah/:id/:date",
     exact: true,
     component: DetailMatakuliah,
     private: true,
