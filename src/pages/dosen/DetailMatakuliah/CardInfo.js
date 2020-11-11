@@ -46,7 +46,7 @@ const dataSet = {
 
 const CardInfo = () => {
   return (
-    <Grid container component={Paper} style={{ padding: "2em", paddingTop: '0' }}>
+    <Grid container component={Paper} style={{ padding: "1em"}}>
       <Grid item container sm={12} xs={6} justify='center' alignContent='center' alignItems='center'>
         <Doughnut
            height={"180%"}

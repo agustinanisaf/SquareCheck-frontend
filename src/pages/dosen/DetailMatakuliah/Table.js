@@ -74,7 +74,7 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: 370,
     minHeight: 350,
     [theme.breakpoints.down("sm")]: {
-      maxWidth: 350
+      maxWidth: 370
     }
   },
 }));
