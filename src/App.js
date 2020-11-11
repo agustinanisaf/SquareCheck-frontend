@@ -47,7 +47,6 @@ theme = responsiveFontSizes(theme);
 
 function App() {
   return (
-    // <CookiesProvider>
     <ThemeProvider theme={theme}>
       <Switch>
         {PUBLIC_ROUTES.map((val) => (
@@ -72,7 +71,6 @@ function App() {
         </Layout>
       </Switch>
     </ThemeProvider>
-    // </CookiesProvider>
   );
 }
 

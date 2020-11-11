@@ -1,6 +1,6 @@
 import React from "react";
-import { Breadcrumbs, Typography, Link as RouterLink } from "@material-ui/core";
-import { Route } from "react-router-dom";
+import { Breadcrumbs, Typography, Link as LinkMUI } from "@material-ui/core";
+import { Route, Link } from "react-router-dom";
 
 export default function MyBreadcrumbs() {
   return (
@@ -20,19 +20,20 @@ export default function MyBreadcrumbs() {
                 <Typography
                   color="textPrimary"
                   key={to}
-                  style={{ textTransform: "capitalize" }}
+                  style={{ textTransform: "capitalize",}}
                 >
-                  {value == "/" ? "home" : value}
+                  {value == "/" ? "Home" : value}
                 </Typography>
               ) : (
-                <RouterLink
-                  color="primary"
-                  to={to}
-                  key={to}
-                  style={{ textTransform: "capitalize" }}
-                >
-                  {value}
-                </RouterLink>
+                  <Link
+                    to={to}
+                    key={to}
+                    style={{ textTransform: "capitalize", cursor: 'pointer', textDecoration:'none'}}
+                  >
+                  <LinkMUI color="primary" underline="hover">
+                    {value}
+                  </LinkMUI>
+                  </Link>
               );
             })}
           </Breadcrumbs>
