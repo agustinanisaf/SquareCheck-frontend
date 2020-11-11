@@ -4,11 +4,11 @@ import Card from "./Card";
 import { Grid, Paper } from "@material-ui/core";
 import { splitToChunk } from "./../../../utils/utility";
 
-function SlideCarousel({ listData }) {
+function SlideCarousel({ listData,id }) {
   return (
     <Grid component={Paper} xs={12} item container spacing={4}>
       {listData.map(() => (
-        <Card />
+        <Card id={id} />
       ))}
     </Grid>
   );
