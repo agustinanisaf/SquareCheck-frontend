@@ -19,10 +19,11 @@ export const PUBLIC_ROUTES = [
 export const DOSEN_ROUTES = [
   {
     name: "Home",
-    path: "/home",
+    path: "/",
     exact: true,
     component: DosenDashboard,
     private: true,
+    restricted: false,
   },
   {
     name: "Matakuliah",
@@ -30,6 +31,7 @@ export const DOSEN_ROUTES = [
     exact: true,
     component: ListMatakuliah,
     private: true,
+    restricted: false,
   },
   {
     name: "Matakuliah",
@@ -37,6 +39,7 @@ export const DOSEN_ROUTES = [
     exact: true,
     component: Matakuliah,
     private: true,
+    restricted: false,
   },
   {
     name: "Detail Matakuliah",
@@ -44,5 +47,6 @@ export const DOSEN_ROUTES = [
     exact: true,
     component: DetailMatakuliah,
     private: true,
+    restricted: false,
   },
 ];

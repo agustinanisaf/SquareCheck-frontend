@@ -1,17 +1,16 @@
-import Cookie from 'js-cookie'
+import Cookie from "js-cookie";
 
 export const login = (data) => {
-    Cookie.set('token', data.token, {expires: 1});
-    Cookie.set("user", data.user, { expires: 1 });
-}
+  Cookie.set("token", data.token, {expires: 0.04166});
+  Cookie.set('token_type', data.token_type)
+};
 
 export const logout = () => {
-    Cookie.remove('token')
-    Cookie.remove("user");
-}
+  Cookie.remove("token");
+  // Cookie.remove("user");
+};
 
 export const isLogin = () => {
-    if (Cookie.get('token') && Cookie.get('user'))
-        return true
-    return false
-}
+  if (Cookie.get("token")) return true;
+  else return false;
+};

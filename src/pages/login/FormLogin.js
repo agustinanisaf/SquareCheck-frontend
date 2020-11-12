@@ -9,7 +9,7 @@ import classes from "./Login.module.scss";
 import { useHistory } from "react-router-dom";
 import { login } from "./../../utils/auth";
 import Cookie from "js-cookie";
-import { api } from "./../../utils/api";
+import { apiWithHeader, api } from "./../../utils/api";
 
 const FormLogin = () => {
   const [email, setEmail] = useState();
@@ -34,22 +34,26 @@ const FormLogin = () => {
   const submit = (e) => {
     e.preventDefault();
 
-    const data = {
-      user: email,
-      password: password,
-    };
-
     api
-      .post("/auth/login", data)
-      .then((res) => {
-        login(res.data);
-        history.push("/home");
+      .post("auth/login", {
+        email: email,
+        password: password,
       })
-      .then(() => {
-        console.log(Cookie.get("user"));
+      .then((res) => {
+        console.log(res)
+        login(res.data);
+        history.push("/");
+        return apiWithHeader.post("auth/me")
+      })
+      .then((res) => {
+        console.log(res);
       })
       .catch((err) => {
-        console.log(err);
+        if (err.response.status === 401) {
+          apiWithHeader.post('auth/refresh').then(res => {
+            console.log(res)
+          })
+        }
       });
   };
 

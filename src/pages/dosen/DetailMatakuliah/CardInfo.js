@@ -49,7 +49,7 @@ const CardInfo = () => {
     <Grid container component={Paper} style={{ padding: "2em", paddingTop: '0' }}>
       <Grid item container sm={12} xs={6} justify='center' alignContent='center' alignItems='center'>
         <Doughnut
-           height={"180%"}
+           height={180}
           data={dataSet.data}
           options={{
             responsive: true,

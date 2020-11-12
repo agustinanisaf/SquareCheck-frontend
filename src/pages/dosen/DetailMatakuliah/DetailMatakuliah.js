@@ -5,7 +5,7 @@ import CardInfo from "./CardInfo";
 
 export default function DetailMatakuliah() {
   return (
-    <Grid container spacing={3} xs={12}>
+    <Grid item container spacing={3} xs={12}>
       <Grid container item spacing={2}>
         <Grid item sm={8} md={8} xs={12}>
           <Typography variant="h5" gutterBottom>

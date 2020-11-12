@@ -6,7 +6,7 @@ export const PrivateRoute = ({Component, ...attr}) => {
     return (
         <Route
             {...attr}
-            render={ props => isLogin() ?
+            render={ (props) => isLogin() ?
                 <Component {...props} />
                 : <Redirect to="/login" />}
         />
@@ -19,7 +19,7 @@ export const PublicRoute = ({ Component,restricted, ...attr }) => {
       {...attr}
       render={(props) =>
         isLogin() && restricted ? (
-          <Redirect to="/home" />
+          <Redirect to="/" />
         ) : (
           <Component {...props} />
         )

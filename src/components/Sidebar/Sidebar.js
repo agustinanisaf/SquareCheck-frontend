@@ -1,18 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ListItemLink from './ListItemLink'
 import {
   Grid, List, ListItem, ListItemText,
   ListItemAvatar, Avatar
 } from '@material-ui/core'
-import { hiIllus, logoWhite, typeLogoWhite } from "./../../assets";
+import { logoWhite, typeLogoWhite } from "./../../assets";
 import { Home, Event, ExitToApp, Assignment } from '@material-ui/icons'
-import {useHistory} from 'react-router-dom'
+import Cookie from 'js-cookie'
 
 export default function Sidebar() {
   const navList = [
     {
       name: "Home",
-      path: "/home",
+      path: "/",
       icon: <Home />,
     },
     {
