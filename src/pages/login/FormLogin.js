@@ -49,11 +49,7 @@ const FormLogin = () => {
         console.log(res);
       })
       .catch((err) => {
-        if (err.response.status === 401) {
-          apiWithHeader.post('auth/refresh').then(res => {
-            console.log(res)
-          })
-        }
+        console.log(err)
       });
   };
 
