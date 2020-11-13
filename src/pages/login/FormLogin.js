@@ -41,10 +41,11 @@ const FormLogin = () => {
       })
       .then((res) => {
         login(res.data);
-        api.post("auth/me").then((res) => {
-          // TODO: Save ID User
-          if (res) history.push("/");
-        });
+        return api.post("auth/me");
+      })
+      .then((res) => {
+        // TODO: Save ID User
+        if (res) history.push("/");
       })
       .catch((err) => {
         console.warn(err);
