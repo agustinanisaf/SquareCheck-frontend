@@ -21,11 +21,6 @@ export default function Sidebar() {
       icon: <Assignment />,
     },
     {
-      name: "Kalender Akademik",
-      path: "/kalender",
-      icon: <Event />,
-    },
-    {
       name: "Logout",
       path: "/login",
       icon: <ExitToApp />,

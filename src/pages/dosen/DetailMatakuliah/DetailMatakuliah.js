@@ -2,9 +2,16 @@ import React from "react";
 import { Grid, Typography, Button } from "@material-ui/core";
 import Table from "./Table";
 import CardInfo from "./CardInfo";
+import {useParams} from 'react-router-dom'
 
 export default function DetailMatakuliah() {
-  return (
+  const params = useParams()
+
+  React.useEffect(() => {
+    console.log(params)
+  },[])
+  
+  let view = (
     <Grid container spacing={3} xs={12}>
       <Grid container item spacing={2}>
         <Grid item sm={8} md={8} xs={12}>
@@ -30,5 +37,10 @@ export default function DetailMatakuliah() {
         </Grid>
       </Grid>
     </Grid>
-  );
+  )
+
+  if (params.date == 'presensi')
+    view = null
+  
+  return (<div>{ view}</div>);
 }

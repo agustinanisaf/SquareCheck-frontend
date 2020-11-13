@@ -1,7 +1,8 @@
 import React from "react";
-import { Paper, Grid, Typography } from "@material-ui/core";
+import { Paper, Grid, Typography, Button } from "@material-ui/core";
 import { Doughnut } from "react-chartjs-2";
 import { COLORS } from "./../../../constants";
+import {Link} from 'react-router-dom'
 
 const fakeData = [
   {
@@ -28,16 +29,14 @@ const fakeData = [
 
 const dataSet = {
   data: {
-    labels: ["Hadir", "Izin", "Terlambat", "Alpa"],
+    labels: ["Hadir", "Tidak Hadir"],
     datasets: [
       {
         label: "Hadir",
-        data: [100, 8, 12, 2],
+        data: [12,18],
         backgroundColor: [
-          COLORS.status.hadir,
-          COLORS.status.izin,
-          COLORS.status.telat,
-          COLORS.status.alpa,
+          COLORS.secondaryLight,
+          COLORS.secondaryDark,
         ],
       },
     ],
@@ -46,10 +45,21 @@ const dataSet = {
 
 const CardInfo = () => {
   return (
-    <Grid container component={Paper} style={{ padding: "2em", paddingTop: '0' }}>
-      <Grid item container sm={12} xs={6} justify='center' alignContent='center' alignItems='center'>
+    <Grid
+      container
+      component={Paper}
+      style={{ padding: "2em", paddingTop: "0" }}
+    >
+      <Grid
+        item
+        container
+        xs={12}
+        justify="center"
+        alignContent="center"
+        alignItems="center"
+      >
         <Doughnut
-           height={"180%"}
+          height={"180%"}
           data={dataSet.data}
           options={{
             responsive: true,
@@ -57,41 +67,65 @@ const CardInfo = () => {
               display: false,
             },
             legend: {
-                display: false,
+              display: false,
             },
           }}
         />
       </Grid>
-      <Grid item container sm={12} xs={6}>
-        {fakeData.map((key, index) => (
-          <Grid
-            container
-            item
-            justify="center"
-            direction="column"
-            xs={6}
-            key={index}
-            component={Paper}
-            //   square
-            //   spacing={3}
-            //   style={{ padding: ".5em 0" }}
+      <Grid
+        item
+        alignContent="center"
+        alignItems="center"
+        justify="center"
+        container
+        xs={12}
+      >
+        <Grid
+          item
+          alignContent="center"
+          alignItems="center"
+          justify="center"
+          container
+          xs={12}
+        >
+          <Typography
+            variant="h3"
+            color="primary"
+            style={{ fontWeight: "700", paddingBottom: '.15em' }}
           >
-            <Typography
-              align="center"
-              variant="h4"
-              style={{ color: `${key.color}`, fontWeight: "700" }}
-            >
-              {key.amount}
-            </Typography>
-            <Typography
-              gutterBottom
-              align="center"
-              style={{ fontSize: ".9em" }}
-            >
-              {key.name}
-            </Typography>
-          </Grid>
-        ))}
+            12 / 30
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          alignContent="center"
+          alignItems="center"
+          justify="center"
+          container
+          xs={12}
+        >
+          <Typography
+            gutterBottom
+            variant="body1"
+            style={{ fontWeight: "600", paddingBottom: '1.2em' }}
+          >
+            Hadir
+          </Typography>
+        </Grid>
+        <Grid
+          item
+          alignContent="center"
+          alignItems="center"
+          justify="center"
+          container
+          xs={12}
+        >
+          <Link to='/matakuliah/1' style={{textDecoration: 'none'}}>
+            <Button variant="contained" color="primary" size="small">
+              Tutup Presensi
+            </Button>
+          </Link>
+        </Grid>
       </Grid>
     </Grid>
   );

@@ -33,17 +33,17 @@ export const DOSEN_ROUTES = [
     private: true,
   },
   {
-    name: "Matakuliah",
-    path: "/matakuliah/:id",
-    exact: true,
-    component: Matakuliah,
-    private: true,
-  },
-  {
     name: "Presensi Baru",
     path: "/matakuliah/:id/presensi",
     exact: true,
     component: Presensi,
+    private: true,
+  },
+  {
+    name: "Matakuliah",
+    path: "/matakuliah/:id",
+    exact: true,
+    component: Matakuliah,
     private: true,
   },
   {
