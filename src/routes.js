@@ -3,7 +3,8 @@ import {
   Dashboard as DosenDashboard,
   ListMatakuliah,
   DetailMatakuliah,
-  Matakuliah
+  Matakuliah,
+  Presensi
 } from './pages/dosen'
 
 export const PUBLIC_ROUTES = [
@@ -36,6 +37,13 @@ export const DOSEN_ROUTES = [
     path: "/matakuliah/:id",
     exact: true,
     component: Matakuliah,
+    private: true,
+  },
+  {
+    name: "Presensi Baru",
+    path: "/matakuliah/:id/presensi",
+    exact: true,
+    component: Presensi,
     private: true,
   },
   {
