@@ -127,11 +127,11 @@ export default function ResponsiveDrawer(props) {
           </Drawer>
         </Hidden>
       </nav>
-      <Grid className={classes.content} spacing={4}>
+      <div className={classes.content}>
         <div className={classes.toolbar} />
         {/* Route for dosen*/}
         {props.children}
-      </Grid>
+      </div>
     </div>
   );
 }

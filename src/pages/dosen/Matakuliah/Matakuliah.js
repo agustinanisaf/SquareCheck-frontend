@@ -16,7 +16,7 @@ export default function DetailMatakuliah() {
   const {id} = useParams()
 
   return (
-    <Grid container spacing={5}>
+    <Grid item container spacing={5}>
       {/* Judul dan tombol export */}
       <Grid container item spacing={2}>
         <Grid item sm={8} md={8} xs={12}>

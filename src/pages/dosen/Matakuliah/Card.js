@@ -6,7 +6,7 @@ import {Link, useRouteMatch} from 'react-router-dom'
 export default function CardComponent({id}) {
   const match = useRouteMatch()
   React.useEffect(() => {
-    console.log(match)
+    // console.log(match)
   },[])
 
     return (

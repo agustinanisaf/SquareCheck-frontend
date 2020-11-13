@@ -4,10 +4,10 @@ import { Line } from "react-chartjs-2";
 
 export default function CardChart({ dataset, name, color }) {
   return (
-    <Card style={{ backgroundColor: `${color}` }}>
+    <Card style={{ backgroundColor: `${color}`}}>
       <CardContent>
         <Line
-          height={"20%"}
+          height={10}
           data={dataset}
           options={{
             responsive: true,

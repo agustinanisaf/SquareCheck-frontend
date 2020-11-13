@@ -1,18 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import ListItemLink from './ListItemLink'
 import {
   Grid, List, ListItem, ListItemText,
   ListItemAvatar, Avatar
 } from '@material-ui/core'
-import { hiIllus, logoWhite, typeLogoWhite } from "./../../assets";
+import { logoWhite, typeLogoWhite } from "./../../assets";
 import { Home, Event, ExitToApp, Assignment } from '@material-ui/icons'
-import {useHistory} from 'react-router-dom'
+import Cookie from 'js-cookie'
 
 export default function Sidebar() {
   const navList = [
     {
       name: "Home",
-      path: "/home",
+      path: "/",
       icon: <Home />,
     },
     {
@@ -39,9 +39,9 @@ export default function Sidebar() {
       <List>
         <ListItem style={{ paddingBottom: "2em", paddingTop: "2em" }}>
           <ListItemAvatar>
-            <Avatar></Avatar>
+            <Avatar>{ localStorage.getItem('profilePicture')}</Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Darto" secondary="Dosen" />
+          <ListItemText primary={localStorage.getItem('nama')} secondary="Dosen" />
         </ListItem>
         {navList.map((data, index) => (
           <ListItemLink
