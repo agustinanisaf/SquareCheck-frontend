@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   FormControl as Form,
   Typography,
@@ -8,7 +8,6 @@ import {
 import classes from "./Login.module.scss";
 import { useHistory } from "react-router-dom";
 import { login } from "./../../utils/auth";
-import Cookie from "js-cookie";
 import { api } from "./../../utils/api";
 
 const FormLogin = () => {
@@ -45,7 +44,13 @@ const FormLogin = () => {
       })
       .then((res) => {
         // TODO: Save ID User
-        if (res) history.push("/");
+        console.log(res)
+        if (res) {
+          const data = res.data.data.user
+          localStorage.setItem('nama', data.name)
+          localStorage.setItem('id', data.id)
+          history.push("/");
+        } 
       })
       .catch((err) => {
         console.warn(err);

@@ -44,9 +44,9 @@ export default function Sidebar() {
       <List>
         <ListItem style={{ paddingBottom: "2em", paddingTop: "2em" }}>
           <ListItemAvatar>
-            <Avatar></Avatar>
+            <Avatar>{ localStorage.getItem('profilePicture')}</Avatar>
           </ListItemAvatar>
-          <ListItemText primary="Darto" secondary="Dosen" />
+          <ListItemText primary={localStorage.getItem('nama')} secondary="Dosen" />
         </ListItem>
         {navList.map((data, index) => (
           <ListItemLink
