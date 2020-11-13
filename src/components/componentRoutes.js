@@ -3,12 +3,13 @@ import {Route, Redirect} from 'react-router-dom'
 import {isLogin} from '../utils/auth'
 
 export const PrivateRoute = ({Component, ...attr}) => {
-    return (
+  
+  return (
         <Route
             {...attr}
             render={ (props) => isLogin() ?
                 <Component {...props} />
-                : <Redirect to="/login" />}
+          : <Redirect to="/login" />}
         />
     )
 }
