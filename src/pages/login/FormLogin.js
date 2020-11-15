@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   FormControl as Form,
   Typography,
@@ -7,18 +7,13 @@ import {
 } from "@material-ui/core";
 import classes from "./Login.module.scss";
 import { useHistory } from "react-router-dom";
-import { login } from './../../utils/auth'
-import Cookie from 'js-cookie'
-import axios from 'axios'
+import { login } from "./../../utils/auth";
+import { api } from "./../../utils/api";
 
 const FormLogin = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const history = useHistory();
-
-  useEffect(() => {
-    console.log(email)
-  }, [email]);
 
   const input = [
     {
@@ -35,15 +30,31 @@ const FormLogin = () => {
     },
   ];
 
-	const submit = (e) => {
-		e.preventDefault();
-		const data = {
-			user: email,
-			token: password
-		}
-		login(data)
-		console.log(Cookie.get('user'))
-    history.push("/home");
+  const submit = (e) => {
+    e.preventDefault();
+
+    api
+      .post("auth/login", {
+        email: email,
+        password: password,
+      })
+      .then((res) => {
+        login(res.data);
+        return api.post("auth/me");
+      })
+      .then((res) => {
+        // TODO: Save ID User
+        console.log(res)
+        if (res) {
+          const data = res.data.data.user
+          localStorage.setItem('nama', data.name)
+          localStorage.setItem('id', data.id)
+          history.push("/");
+        } 
+      })
+      .catch((err) => {
+        console.warn(err);
+      });
   };
 
   return (
@@ -72,8 +83,8 @@ const FormLogin = () => {
         <Button
           color="primary"
           variant="contained"
-				  style={{ marginTop: "2em" }}
-				  onClick={submit}
+          style={{ marginTop: "2em" }}
+          onClick={submit}
         >
           Login
         </Button>

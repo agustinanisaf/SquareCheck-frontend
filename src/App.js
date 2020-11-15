@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
@@ -45,7 +46,7 @@ let theme = createMuiTheme({
 
 theme = responsiveFontSizes(theme);
 
-function App() {
+function App() {    
   return (
     <ThemeProvider theme={theme}>
       <Router>
