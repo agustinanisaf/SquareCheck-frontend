@@ -39,7 +39,7 @@ export default function DetailMatakuliah() {
     </Grid>
   )
 
-  if (params.date == 'presensi')
+  if (params.date === 'presensi')
     view = null
   
   return (<div>{ view}</div>);

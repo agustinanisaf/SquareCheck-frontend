@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 import ListItemLink from './ListItemLink'
 import {
   Grid, List, ListItem, ListItemText,
   ListItemAvatar, Avatar
 } from '@material-ui/core'
 import { logoWhite, typeLogoWhite } from "./../../assets";
-import { Home, Event, ExitToApp, Assignment } from '@material-ui/icons'
-import Cookie from 'js-cookie'
+import { Home, ExitToApp, Assignment } from '@material-ui/icons'
 
 export default function Sidebar() {
   const navList = [

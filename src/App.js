@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
@@ -46,7 +45,7 @@ let theme = createMuiTheme({
 
 theme = responsiveFontSizes(theme);
 
-function App() {    
+function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
@@ -60,26 +59,24 @@ function App() {
               restricted={val.restricted}
             />
           ))}
-          <Route component={PrivateRoute}/>
+          <Route exact path={["/", "/matakuliah", "/matakuliah/*"]}>
+            <Layout>
+              <Switch>
+                {DOSEN_ROUTES.map((val) => (
+                  <PrivateRoute
+                    key={val.name}
+                    path={val.path}
+                    exact={val.exact}
+                    component={val.component}
+                    private={val.private}
+                  />
+                ))}
+              </Switch>
+            </Layout>
+          </Route>
         </Switch>
       </Router>
     </ThemeProvider>
-  );
-}
-
-function PrivateRoutes() {
-  return (
-    <Layout>
-      {DOSEN_ROUTES.map((val) => (
-        <PrivateRoute
-          key={val.name}
-          path={val.path}
-          exact={val.exact}
-          component={val.component}
-          private={val.private}
-        />
-      ))}
-    </Layout>
   );
 }
 

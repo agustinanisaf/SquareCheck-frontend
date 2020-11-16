@@ -20,7 +20,7 @@ const CardComponent = ({ data }) => {
               gutterBottom
               color="textPrimary"
             >
-              Mobile Programming
+              {data.subject.name}
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -29,18 +29,16 @@ const CardComponent = ({ data }) => {
             </Typography>
           </Grid>
           <Typography variant="caption" color="primary">
-            D4 A 2018
+            {data.subject.classroom.slug}
           </Typography>
         </Grid>
         <Grid container item xs={12} style={{ marginTop: "1em" }}>
-          {data.map((key, index) => (
             <Grid
               container
               item
               justify="center"
               direction="column"
               xs={3}
-              key={index}
               component={Paper}
               square
               style={{ padding: ".5em 0" }}
@@ -48,19 +46,93 @@ const CardComponent = ({ data }) => {
               <Typography
                 align="center"
                 variant="h4"
-                style={{ color: `${key.color}`, fontWeight: "700" }}
+                style={{ color: `${COLORS.status.hadir}`, fontWeight: "700" }}
               >
-                {key.amount}
+                {data.hadir}
               </Typography>
               <Typography
                 gutterBottom
                 align="center"
                 style={{ fontSize: ".8em" }}
-              >
-                {key.name}
+            >
+              Hadir
               </Typography>
             </Grid>
-          ))}
+            <Grid
+              container
+              item
+              justify="center"
+              direction="column"
+              xs={3}
+              component={Paper}
+              square
+              style={{ padding: ".5em 0" }}
+            >
+              <Typography
+                align="center"
+                variant="h4"
+                style={{ color: `${COLORS.status.izin}`, fontWeight: "700" }}
+              >
+                {data.izin}
+              </Typography>
+              <Typography
+                gutterBottom
+                align="center"
+                style={{ fontSize: ".8em" }}
+            >
+              Izin
+              </Typography>
+            </Grid>
+            <Grid
+              container
+              item
+              justify="center"
+              direction="column"
+              xs={3}
+              component={Paper}
+              square
+              style={{ padding: ".5em 0" }}
+            >
+              <Typography
+                align="center"
+                variant="h4"
+                style={{ color: `${COLORS.status.telat}`, fontWeight: "700" }}
+              >
+                {data.terlambat}
+              </Typography>
+              <Typography
+                gutterBottom
+                align="center"
+                style={{ fontSize: ".8em" }}
+            >
+              Terlambat
+              </Typography>
+            </Grid>
+            <Grid
+              container
+              item
+              justify="center"
+              direction="column"
+              xs={3}
+              component={Paper}
+              square
+              style={{ padding: ".5em 0" }}
+            >
+              <Typography
+                align="center"
+                variant="h4"
+                style={{ color: `${COLORS.status.alpa}`, fontWeight: "700" }}
+              >
+                {data.alpa}
+              </Typography>
+              <Typography
+                gutterBottom
+                align="center"
+                style={{ fontSize: ".8em" }}
+            >
+              Alpa
+              </Typography>
+            </Grid>
         </Grid>
         <Grid item align="right" xs={12} style={{ paddingTop: ".5em" }}>
           <Link to={`/matakuliah/${1}`} style={{ textDecoration: "none" }}>
