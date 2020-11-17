@@ -46,8 +46,8 @@ const dataSet = {
 
 const CardInfo = () => {
   return (
-    <Grid container component={Paper} style={{ padding: "2em", paddingTop: '0' }}>
-      <Grid item container sm={12} xs={6} justify='center' alignContent='center' alignItems='center'>
+    <Grid container component={Paper} style={{ padding: "1em"}}>
+      <Grid item container xs={12} justify='center' alignContent='center' alignItems='center'>
         <Doughnut
            height={180}
           data={dataSet.data}
@@ -62,7 +62,7 @@ const CardInfo = () => {
           }}
         />
       </Grid>
-      <Grid item container sm={12} xs={6}>
+      <Grid item container xs={12}>
         {fakeData.map((key, index) => (
           <Grid
             container

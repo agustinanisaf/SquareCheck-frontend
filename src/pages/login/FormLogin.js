@@ -7,12 +7,13 @@ import {
 } from "@material-ui/core";
 import classes from "./Login.module.scss";
 import { useHistory } from "react-router-dom";
-import { login } from "./../../utils/auth";
+import { login, isLogin } from "./../../utils/auth";
 import { api } from "./../../utils/api";
 
 const FormLogin = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [disabled, setDisabled] = useState(false);
   const history = useHistory();
 
   const input = [
@@ -32,7 +33,7 @@ const FormLogin = () => {
 
   const submit = (e) => {
     e.preventDefault();
-
+    setDisabled(true);
     api
       .post("auth/login", {
         email: email,
@@ -40,20 +41,16 @@ const FormLogin = () => {
       })
       .then((res) => {
         login(res.data);
+        console.log(isLogin());
         return api.post("auth/me");
       })
-      .then((res) => {
+      .then(() => {
         // TODO: Save ID User
-        console.log(res)
-        if (res) {
-          const data = res.data.data.user
-          localStorage.setItem('nama', data.name)
-          localStorage.setItem('id', data.id)
-          history.push("/");
-        } 
+        history.push("/");
       })
       .catch((err) => {
         console.warn(err);
+        setDisabled(false)
       });
   };
 
@@ -85,6 +82,7 @@ const FormLogin = () => {
           variant="contained"
           style={{ marginTop: "2em" }}
           onClick={submit}
+          disabled={disabled}
         >
           Login
         </Button>

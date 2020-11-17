@@ -1,6 +1,5 @@
-
 import React from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
 import "./App.css";
 import {
   createMuiTheme,
@@ -46,31 +45,37 @@ let theme = createMuiTheme({
 
 theme = responsiveFontSizes(theme);
 
-function App() {    
+function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Switch>
-        {PUBLIC_ROUTES.map((val) => (
-          <PublicRoute
-            key={val.name}
-            path={val.path}
-            exact={val.exact}
-            component={val.component}
-            restricted={val.restricted}
-          />
-        ))}
-        <Layout>
-          {DOSEN_ROUTES.map((val) => (
-            <PrivateRoute
+      <Router>
+        <Switch>
+          {PUBLIC_ROUTES.map((val) => (
+            <PublicRoute
               key={val.name}
               path={val.path}
               exact={val.exact}
               component={val.component}
-              private={val.private}
+              restricted={val.restricted}
             />
           ))}
-        </Layout>
-      </Switch>
+          <Route exact path={["/home", "/matakuliah", "/matakuliah/*"]}>
+            <Layout>
+              <Switch>
+                {DOSEN_ROUTES.map((val) => (
+                  <PrivateRoute
+                    key={val.name}
+                    path={val.path}
+                    exact={val.exact}
+                    component={val.component}
+                    private={val.private}
+                  />
+                ))}
+              </Switch>
+            </Layout>
+          </Route>
+        </Switch>
+      </Router>
     </ThemeProvider>
   );
 }

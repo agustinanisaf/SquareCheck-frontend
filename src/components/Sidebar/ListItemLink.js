@@ -1,14 +1,15 @@
-import React, {useMemo, forwardRef} from 'react'
-import {ListItem, ListItemText, ListItemIcon} from '@material-ui/core'
-import { Link, useLocation, useHistory } from 'react-router-dom'
+import React, { useMemo, forwardRef } from "react";
+import { ListItem, ListItemText, ListItemIcon } from "@material-ui/core";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 import { logout } from "./../../utils/auth";
-import Cookie from 'js-cookie'
+import Cookie from "js-cookie";
+import { api } from "./../../utils/api";
 
 export default function ListItemLink(props) {
   const { primary, to, icon } = props;
   const location = useLocation();
-  const history = useHistory()
+  const history = useHistory();
 
   const renderLink = useMemo(
     () =>
@@ -17,11 +18,18 @@ export default function ListItemLink(props) {
   );
 
   const logoutClick = (e) => {
-    e.preventDefault()
-    logout()
-    console.log(Cookie.get('user'))
-    history.push("/login")
-  }
+    e.preventDefault();
+    api
+      .post("auth/logout")
+      .then((res) => {
+        console.log(res);
+        logout();
+        history.push("/login");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <li>
@@ -29,9 +37,9 @@ export default function ListItemLink(props) {
         button
         component={renderLink}
         selected={to === location.pathname}
-        onClick={primary == "Logout" ? logoutClick : null}
+        onClick={primary === "Logout" ? logoutClick : null}
       >
-        {icon && <ListItemIcon style={{color: "white"}}>{icon}</ListItemIcon>}
+        {icon && <ListItemIcon style={{ color: "white" }}>{icon}</ListItemIcon>}
         <ListItemText primary={primary} />
       </ListItem>
     </li>

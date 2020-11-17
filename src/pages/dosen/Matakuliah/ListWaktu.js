@@ -16,9 +16,6 @@ function SlideCarousel({ listData,id }) {
 
 export default function ListWaktu({ data, sizeData }) {
   const dataChunk = splitToChunk(data, sizeData, 9);
-  React.useState(() => {
-    console.log(dataChunk);
-  }, []);
 
   return (
     // <Grid container>
