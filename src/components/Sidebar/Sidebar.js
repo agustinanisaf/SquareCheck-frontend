@@ -40,7 +40,7 @@ export default function Sidebar() {
           <ListItemAvatar>
             <Avatar>{ localStorage.getItem('profilePicture')}</Avatar>
           </ListItemAvatar>
-          <ListItemText primary={localStorage.getItem('nama')} secondary="Dosen" />
+          <ListItemText primary={localStorage.getItem('name')} secondary="Dosen" />
         </ListItem>
         {navList.map((data, index) => (
           <ListItemLink
