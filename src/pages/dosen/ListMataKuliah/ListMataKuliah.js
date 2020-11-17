@@ -53,8 +53,8 @@ const ListMataKuliah = () => {
   ) : !isError && subjects ? (
     <Carousel
       autoPlay={false}
-      next={() => (hasNext ? setPage(page + 1) : null)}
-      prev={() => (hasPrev ? setPage(page - 1) : null)}
+      next={() => (hasNext ? setPage((page) => page + 1) : null)}
+      prev={() => (hasPrev ? setPage((page) => page - 1) : null)}
     >
       <SlideCarousel subjects={subjects} />
     </Carousel>

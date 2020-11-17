@@ -54,6 +54,7 @@ const FormLogin = () => {
           throw new Error(res)
         }
         localStorage.setItem('name', res.data.data.user.name)
+        localStorage.setItem("id", res.data.data.user.id);
         history.push("/home");
       })
       .catch((err) => {
@@ -105,7 +106,7 @@ const FormLogin = () => {
         </Button>
       </Form>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error">
+        <Alert onClose={handleClose} variant="filled" severity="error">
           Cek kembali email dan password anda
         </Alert>
       </Snackbar>
