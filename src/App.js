@@ -59,7 +59,7 @@ function App() {
               restricted={val.restricted}
             />
           ))}
-          <Route exact path={["/", "/matakuliah", "/matakuliah/*"]}>
+          <Route exact path={["/home", "/matakuliah", "/matakuliah/*"]}>
             <Layout>
               <Switch>
                 {DOSEN_ROUTES.map((val) => (

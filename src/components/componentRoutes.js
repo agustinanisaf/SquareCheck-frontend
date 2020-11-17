@@ -27,7 +27,7 @@ export const PublicRoute = ({ Component,restricted, ...attr }) => {
         !isLogin() ? restricted (
           <Component {...props} />
         ) : (
-          <Redirect to={{pathname: "/", from: props.location}} />
+          <Redirect to={{pathname: "/home", from: props.location}} />
         )
       }
     />

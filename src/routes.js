@@ -20,7 +20,7 @@ export const PUBLIC_ROUTES = [
 export const DOSEN_ROUTES = [
   {
     name: "Home",
-    path: "/",
+    path: "/home",
     exact: true,
     component: DosenDashboard,
     private: true,

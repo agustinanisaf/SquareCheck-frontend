@@ -2,9 +2,12 @@ import React from 'react';
 import { Card, Grid, CardContent, Typography, Paper } from '@material-ui/core'
 import classes from './Dashboard.module.scss'
 import {Link} from 'react-router-dom'
-import {COLORS} from './../../../constants'
+import { COLORS } from './../../../constants'
+import moment from 'moment'
 
 const CardComponent = ({ data }) => {
+  const [loading, setLoading] = React.useState(true);
+
   return (
     <Grid
       container
@@ -25,7 +28,7 @@ const CardComponent = ({ data }) => {
           </Grid>
           <Grid item xs={4}>
             <Typography variant="subtitle2" align="right" color="textPrimary">
-              20 Okt 2020
+              {moment(data.time).format('D MMM YY')}
             </Typography>
           </Grid>
           <Typography variant="caption" color="primary">
