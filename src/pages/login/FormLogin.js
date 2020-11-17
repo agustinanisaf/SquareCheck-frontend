@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import {
   FormControl as Form,
-  Typography,
-  TextField,
+  Typography, Snackbar,
+  TextField, CircularProgress,
   Button,
 } from "@material-ui/core";
+import {Alert} from '@material-ui/lab'
 import classes from "./Login.module.scss";
 import { useHistory } from "react-router-dom";
-import { login, isLogin } from "./../../utils/auth";
+import { login, isLogin, logout } from "./../../utils/auth";
 import { api } from "./../../utils/api";
 
 const FormLogin = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [disabled, setDisabled] = useState(false);
+  const [open, setOpen] = useState(false);
   const history = useHistory();
 
   const input = [
@@ -44,14 +46,29 @@ const FormLogin = () => {
         console.log(isLogin());
         return api.post("auth/me");
       })
-      .then(() => {
+      .then((res) => {
         // TODO: Save ID User
-        history.push("/");
+        if (res.data.data.user.role !== "lecturer") {
+          logout()
+          console.log("youre not lecturer")
+          throw new Error(res)
+        }
+        localStorage.setItem('name', res.data.data.user.name)
+        history.push("/home");
       })
       .catch((err) => {
         console.warn(err);
         setDisabled(false)
+        setOpen(true)
       });
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   return (
@@ -84,9 +101,14 @@ const FormLogin = () => {
           onClick={submit}
           disabled={disabled}
         >
-          Login
+          {!disabled ? "Login" : (<CircularProgress size={ 30}/>)}
         </Button>
       </Form>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error">
+          Cek kembali email dan password anda
+        </Alert>
+      </Snackbar>
     </div>
   );
 };
