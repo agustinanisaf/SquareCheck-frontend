@@ -10,6 +10,7 @@ import Montserrat from "./assets/Montserrat-Regular.ttf";
 import { PublicRoute, PrivateRoute } from "./components/componentRoutes";
 import Layout from "./components/Layout";
 import { DOSEN_ROUTES, PUBLIC_ROUTES } from "./routes";
+import {ErrorPage} from "./components"
 
 const montserrat = {
   fontFamily: "Montserrat",
@@ -74,6 +75,7 @@ function App() {
               </Switch>
             </Layout>
           </Route>
+          <Route path="*" component={ ErrorPage}/>
         </Switch>
       </Router>
     </ThemeProvider>
