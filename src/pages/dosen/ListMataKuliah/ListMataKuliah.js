@@ -47,7 +47,7 @@ const ListMataKuliah = () => {
 
   return isLoading ? (
     // TODO: Change Loading Center Page
-    <Grid container justify="center">
+    <Grid container item justify="center" alignContent="center" alignItems="center">
       <CircularProgress />
     </Grid>
   ) : !isError && subjects ? (

@@ -6,7 +6,7 @@ import { splitToChunk } from "./../../../utils/utility";
 
 function SlideCarousel({ listData,id }) {
   return (
-    <Grid component={Paper} xs={12} item container spacing={4}>
+    <Grid xs={12} item container spacing={4}>
       {listData.map(() => (
         <Card id={id} />
       ))}
@@ -21,9 +21,7 @@ export default function ListWaktu({ data, sizeData }) {
     // <Grid container>
       <Carousel autoPlay={false}>
         {dataChunk.map((data, index) => (
-          <Grid container item xs={12}>
             <SlideCarousel key={index} listData={data} />
-          </Grid>
         ))}
       </Carousel>
     // </Grid>
