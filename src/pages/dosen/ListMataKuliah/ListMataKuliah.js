@@ -47,14 +47,14 @@ const ListMataKuliah = () => {
 
   return isLoading ? (
     // TODO: Change Loading Center Page
-    <Grid container justify="center">
+    <Grid container item justify="center" alignContent="center" alignItems="center">
       <CircularProgress />
     </Grid>
   ) : !isError && subjects ? (
     <Carousel
       autoPlay={false}
-      next={() => (hasNext ? setPage(page + 1) : null)}
-      prev={() => (hasPrev ? setPage(page - 1) : null)}
+      next={() => (hasNext ? setPage((page) => page + 1) : null)}
+      prev={() => (hasPrev ? setPage((page) => page - 1) : null)}
     >
       <SlideCarousel subjects={subjects} />
     </Carousel>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid, Paper, Typography, Button } from "@material-ui/core";
-import { NavigateNextIcon } from "@material-ui/icons";
+import {api} from "./../../../utils/api"
 import Charts from "./Charts/Charts";
 import ListWaktu from './ListWaktu'
 import { useParams, Link } from 'react-router-dom'
@@ -13,7 +13,20 @@ const fakeListCard = () => {
 }
 
 export default function DetailMatakuliah() {
-  const {id} = useParams()
+  const { id } = useParams()
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => {
+    api
+      .get("schedules/summarize")
+      .then((res) => {
+        console.log(res);
+        setData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <Grid item container spacing={5}>

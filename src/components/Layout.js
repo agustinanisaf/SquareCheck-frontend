@@ -127,7 +127,7 @@ export default function ResponsiveDrawer(props) {
           </Drawer>
         </Hidden>
       </nav>
-      <div className={classes.content}>
+      <div className={classes.content} style={{height: "100vh"}}>
         <div className={classes.toolbar} />
         {/* Route for dosen*/}
         {props.children}
