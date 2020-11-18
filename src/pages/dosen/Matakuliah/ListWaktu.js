@@ -7,8 +7,8 @@ import { splitToChunk } from "./../../../utils/utility";
 function SlideCarousel({ listData,id }) {
   return (
     <Grid item container spacing={1}>
-      {listData.map(() => (
-        <Card id={id} />
+      {listData.map((data, index) => (
+        <Card key={index} data={data}/>
       ))}
     </Grid>
   );
