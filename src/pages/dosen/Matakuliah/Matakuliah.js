@@ -51,9 +51,9 @@ export default function DetailMatakuliah() {
       </Grid>
 
       {/* List Hari matakuliah */}
-      <Grid container item>
+      {/* <Grid container item> */}
         <ListWaktu data={fakeListCard()} id={id} sizeData={fakeListCard().length} />
-      </Grid>
+      {/* </Grid> */}
     </Grid>
   );
 }
