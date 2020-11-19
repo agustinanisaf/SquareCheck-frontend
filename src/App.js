@@ -10,6 +10,7 @@ import Montserrat from "./assets/Montserrat-Regular.ttf";
 import { PublicRoute, PrivateRoute } from "./components/componentRoutes";
 import Layout from "./components/Layout";
 import { DOSEN_ROUTES, PUBLIC_ROUTES } from "./routes";
+import {ErrorPage} from "./components"
 
 const montserrat = {
   fontFamily: "Montserrat",
@@ -59,7 +60,7 @@ function App() {
               restricted={val.restricted}
             />
           ))}
-          <Route exact path={["/home", "/matakuliah", "/matakuliah/*"]}>
+          <Route exact path={["/", "/matakuliah", "/matakuliah/*"]}>
             <Layout>
               <Switch>
                 {DOSEN_ROUTES.map((val) => (
@@ -74,6 +75,7 @@ function App() {
               </Switch>
             </Layout>
           </Route>
+          <Route path="*" component={ ErrorPage}/>
         </Switch>
       </Router>
     </ThemeProvider>

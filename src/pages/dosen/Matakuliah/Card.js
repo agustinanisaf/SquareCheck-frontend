@@ -19,22 +19,24 @@ export default function CardComponent({data}) {
         to={`${match.url}/${data.id}`}
         style={{textDecoration: "none", color: "#444444"}}
       >
-        <CardContent
-          component={Grid}
-          container
-          item
-          alignContent="center"
-          alignItems="center"
-        >
-          <Grid item xs={10} container alignItems="center">
-            <Grid item xs={12}>
-              <Typography variant="body1">{moment(`${data.time}`).format("dddd, DD MMM YY")}</Typography>
+        <Card component={Grid} item container>
+          <CardContent
+            component={Grid}
+            container
+            item
+            alignContent="center"
+            alignItems="center"
+          >
+            <Grid item xs={10} container alignItems="center">
+              <Grid item xs={12}>
+                <Typography variant="body1">{moment(`${data.time}`).format("dddd, DD MMM YY")}</Typography>
+              </Grid>
             </Grid>
-          </Grid>
-          <Grid container item xs={2} justify="center" alignItems="center">
-              <NavigateNext />
-          </Grid>
-        </CardContent>
+            <Grid container item xs={2} justify="center" alignItems="center">
+                <NavigateNext />
+            </Grid>
+          </CardContent>
+        </Card>
       </Grid>
     );
 }

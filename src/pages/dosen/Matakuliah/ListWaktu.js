@@ -1,12 +1,12 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 import Card from "./Card";
-import { Grid, Paper } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { splitToChunk } from "./../../../utils/utility";
 
-function SlideCarousel({ listData,id }) {
+function SlideCarousel({ listData }) {
   return (
-    <Grid item container spacing={1}>
+    <Grid item container justify="center" alignItems="center" alignContent="center" spacing={2}>
       {listData.map((data, index) => (
         <Card key={index} data={data}/>
       ))}
@@ -18,7 +18,7 @@ export default function ListWaktu({ data, sizeData }) {
   const dataChunk = splitToChunk(data, sizeData, 9);
 
   return (
-    <Grid container item spacing={3}>
+    <Grid container item>
       <Carousel autoPlay={false}>
         {/* <Grid container> */}
           {dataChunk.map((data, index) => (
