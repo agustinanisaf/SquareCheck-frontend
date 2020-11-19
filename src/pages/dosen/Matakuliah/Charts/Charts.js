@@ -78,7 +78,7 @@ export default function Charts() {
     return (
       <Grid container spacing={2}>
         {listChart.map((data) => (
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid item xs={6} sm={6} md={3}>
             <CardChart
               name={data.name}
               spacing={2}

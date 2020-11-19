@@ -38,7 +38,7 @@ export default function Sidebar() {
       <List>
         <ListItem style={{ paddingBottom: "2em", paddingTop: "2em" }}>
           <ListItemAvatar>
-            <Avatar>{ localStorage.getItem('profilePicture')}</Avatar>
+            <Avatar>{ localStorage.getItem('photo')}</Avatar>
           </ListItemAvatar>
           <ListItemText primary={localStorage.getItem('name')} secondary="Dosen" />
         </ListItem>

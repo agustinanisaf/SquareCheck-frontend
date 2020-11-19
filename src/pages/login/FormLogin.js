@@ -3,13 +3,14 @@ import {
   FormControl as Form,
   Typography, Snackbar,
   TextField, CircularProgress,
-  Button,
+  Button, Grid
 } from "@material-ui/core";
 import {Alert} from '@material-ui/lab'
 import classes from "./Login.module.scss";
 import { useHistory } from "react-router-dom";
 import { login, isLogin, logout } from "./../../utils/auth";
 import { api } from "./../../utils/api";
+import { logo, typeLogo } from "./../../assets";
 
 const FormLogin = () => {
   const [email, setEmail] = useState();
@@ -55,7 +56,8 @@ const FormLogin = () => {
         }
         localStorage.setItem('name', res.data.data.user.name)
         localStorage.setItem("id", res.data.data.user.id);
-        history.push("/home");
+        localStorage.setItem("photo", res.data.data.user.photo);
+        history.push("/");
       })
       .catch((err) => {
         console.warn(err);
@@ -102,7 +104,7 @@ const FormLogin = () => {
           onClick={submit}
           disabled={disabled}
         >
-          {!disabled ? "Login" : (<CircularProgress size={ 30}/>)}
+          {!disabled ? "Login" : <CircularProgress size={30} />}
         </Button>
       </Form>
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>

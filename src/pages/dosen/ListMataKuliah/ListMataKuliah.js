@@ -7,14 +7,12 @@ import Carousel from "react-material-ui-carousel";
 
 const SlideCarousel = ({ subjects }) => {
   return (
-    <Grid container className={classes.ListMataKuliah}>
-      {subjects.map((subject) => {
-        return (
-          <Grid key={subject.id} md={4} sm={6} item className={classes.Card}>
+    <Grid container spacing={2} className={classes.ListMataKuliah}>
+      {subjects.map((subject) => 
+          
             <MataKuliahCard key={subject.id} subject={subject} />
-          </Grid>
-        );
-      })}
+          
+      )}
     </Grid>
   );
 };
