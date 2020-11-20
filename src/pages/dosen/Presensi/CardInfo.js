@@ -2,30 +2,8 @@ import React from "react";
 import { Paper, Grid, Typography, Button } from "@material-ui/core";
 import { Doughnut } from "react-chartjs-2";
 import { COLORS } from "./../../../constants";
-import {Link} from 'react-router-dom'
-
-const fakeData = [
-  {
-    name: "Hadir",
-    amount: 100,
-    color: COLORS.status.hadir,
-  },
-  {
-    name: "Izin",
-    amount: 8,
-    color: COLORS.status.izin,
-  },
-  {
-    name: "Terlambat",
-    amount: 12,
-    color: COLORS.status.telat,
-  },
-  {
-    name: "Alpa",
-    amount: 2,
-    color: COLORS.status.alpa,
-  },
-];
+import { Link, useHistory } from "react-router-dom";
+import { api } from "./../../../utils/api";
 
 const dataSet = {
   data: {
@@ -33,17 +11,30 @@ const dataSet = {
     datasets: [
       {
         label: "Hadir",
-        data: [12,18],
-        backgroundColor: [
-          COLORS.secondaryLight,
-          COLORS.secondaryDark,
-        ],
+        data: [12, 18],
+        backgroundColor: [COLORS.secondaryLight, COLORS.secondaryDark],
       },
     ],
   },
 };
 
-const CardInfo = () => {
+const CardInfo = ({ id }) => {
+  const history = useHistory();
+
+  React.useEffect(() => {}, []);
+
+  const onCloseClick = (e) => {
+    api
+      .post(`schedules/${id}/close`)
+      .then((res) => {
+        console.log(res);
+        history.push(`/matakuliah/${id}`)
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <Grid
       container
@@ -91,7 +82,7 @@ const CardInfo = () => {
           <Typography
             variant="h3"
             color="primary"
-            style={{ fontWeight: "700", paddingBottom: '.15em' }}
+            style={{ fontWeight: "700", paddingBottom: ".15em" }}
           >
             12 / 30
           </Typography>
@@ -107,7 +98,7 @@ const CardInfo = () => {
           <Typography
             gutterBottom
             variant="body1"
-            style={{ fontWeight: "600", paddingBottom: '1.2em' }}
+            style={{ fontWeight: "600", paddingBottom: "1.2em" }}
           >
             Hadir
           </Typography>
@@ -120,8 +111,8 @@ const CardInfo = () => {
           container
           xs={12}
         >
-          <Link to='/matakuliah/1' style={{textDecoration: 'none'}}>
-            <Button variant="contained" color="primary" size="small">
+          <Link to="/matakuliah/1" style={{ textDecoration: "none" }}>
+            <Button variant="contained" color="primary" size="small" >
               Tutup Presensi
             </Button>
           </Link>

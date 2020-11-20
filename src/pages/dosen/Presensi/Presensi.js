@@ -2,8 +2,25 @@ import React from "react";
 import { Grid, Typography, Button } from "@material-ui/core";
 import Table from "./Table";
 import CardInfo from "./CardInfo";
+import { useParams } from "react-router-dom";
+import { api } from "./../../../utils/api";
 
 export default function Presensi() {
+  const { id } = useParams();
+  const [listData, setListData] = React.useState([]);
+
+  React.useEffect(() => {
+    api
+      .get(`schedules/${id}/attendances`)
+      .then((res) => {
+        console.log(res.data.data);
+        setListData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <Grid container spacing={3} xs={12}>
       <Grid container item spacing={2}>
@@ -16,10 +33,10 @@ export default function Presensi() {
       </Grid>
       <Grid item container spacing={2}>
         <Grid item container sm={12} xs={12} md={4}>
-          <CardInfo />
+          <CardInfo id={id} />
         </Grid>
         <Grid item container sm={12} xs={12} md={8}>
-          <Table />
+          <Table data={listData} />
         </Grid>
       </Grid>
     </Grid>
