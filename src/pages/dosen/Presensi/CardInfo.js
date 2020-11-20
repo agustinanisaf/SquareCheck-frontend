@@ -1,25 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import { Paper, Grid, Typography, Button } from "@material-ui/core";
 import { Doughnut } from "react-chartjs-2";
 import { COLORS } from "./../../../constants";
 import { Link, useHistory } from "react-router-dom";
 import { api } from "./../../../utils/api";
 
-const dataSet = {
-  data: {
-    labels: ["Hadir", "Tidak Hadir"],
-    datasets: [
-      {
-        label: "Hadir",
-        data: [12, 18],
-        backgroundColor: [COLORS.secondaryLight, COLORS.secondaryDark],
-      },
-    ],
-  },
-};
-
 const CardInfo = ({ id }) => {
   const history = useHistory();
+  const [hadir, setHadir] = useState(12)
+  const [tidakHadir, setTidakHadir] = useState(18)
 
   React.useEffect(() => {}, []);
 
@@ -33,6 +22,19 @@ const CardInfo = ({ id }) => {
       .catch((err) => {
         console.log(err);
       });
+  };
+
+  const dataSet = {
+    data: {
+      labels: ["Hadir", "Tidak Hadir"],
+      datasets: [
+        {
+          label: "Hadir",
+          data: [hadir, tidakHadir],
+          backgroundColor: [COLORS.secondaryLight, COLORS.secondaryDark],
+        },
+      ],
+    },
   };
 
   return (
@@ -84,7 +86,7 @@ const CardInfo = ({ id }) => {
             color="primary"
             style={{ fontWeight: "700", paddingBottom: ".15em" }}
           >
-            12 / 30
+            {hadir} / {hadir + tidakHadir}
           </Typography>
         </Grid>
         <Grid
