@@ -3,7 +3,7 @@ import { Grid, Paper, Typography, Button } from "@material-ui/core";
 import {api} from "./../../../utils/api"
 import Charts from "./Charts/Charts";
 import ListWaktu from './ListWaktu'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useHistory } from 'react-router-dom'
 
 const fakeListCard = () => {
   let data = []
@@ -14,6 +14,7 @@ const fakeListCard = () => {
 
 export default function DetailMatakuliah() {
   const { id } = useParams()
+  const history = useHistory()
   const [subject, setSubject] = useState();
   const [slug, setSlug] = useState();
   const [listWaktu, setListWaktu] = useState([]);
@@ -39,6 +40,18 @@ export default function DetailMatakuliah() {
       });
   }, []);
 
+  const presensiClicked = (e) => {
+    e.preventDefault()
+
+    api.post(`schedules/${id}/open`)
+      .then(res => {
+        history.push(`/matakuliah/${id}/presensi`)
+      })
+      .catch(err => {
+      console.log(err)
+    })
+  }
+
   return (
     <Grid item container spacing={5}>
       {/* Judul dan tombol export */}
@@ -54,7 +67,7 @@ export default function DetailMatakuliah() {
             item
             style={{ textDecoration: "none" }}
           >
-            <Button size="small" variant="contained" color="primary">
+            <Button size="small" variant="contained" color="primary" >
               Buka Presensi
             </Button>
           </Grid>
