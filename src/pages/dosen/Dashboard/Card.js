@@ -138,7 +138,7 @@ const CardComponent = ({ data }) => {
             </Grid>
         </Grid>
         <Grid item align="right" xs={12} style={{ paddingTop: ".5em" }}>
-          <Link to={`/matakuliah/${1}`} style={{ textDecoration: "none" }}>
+          <Link to={`/matakuliah/${data.subject.id}/${data.id}`} style={{ textDecoration: "none" }}>
             <Typography
               variant="caption"
               style={{ color: `${COLORS.secondaryLight}` }}

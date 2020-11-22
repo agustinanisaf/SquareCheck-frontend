@@ -22,9 +22,9 @@ const Dashboard = () => {
 
   return (
     <Grid item container className={classes.Dashboard} spacing={4}>
-      {data.map((data,i) => (
+      {data.map((dataKey,i) => (
         <Grid key={i} md={4} sm={6} item className={classes.Card}>
-          <CardComponent data={data} />
+          <CardComponent data={dataKey} />
         </Grid>
       ))}
     </Grid>
