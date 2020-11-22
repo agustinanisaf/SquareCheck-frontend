@@ -5,13 +5,6 @@ import Charts from "./Charts/Charts";
 import ListWaktu from './ListWaktu'
 import { useParams, Link, useHistory } from 'react-router-dom'
 
-const fakeListCard = () => {
-  let data = []
-  for (let i = 0; i < 30; i++)
-    data.push(i)
-  return data
-}
-
 export default function DetailMatakuliah() {
   const { id } = useParams()
   const history = useHistory()
@@ -40,7 +33,7 @@ export default function DetailMatakuliah() {
       });
   }, []);
 
-  const presensiClicked = (e) => {
+  const onPresensiClicked = (e) => {
     e.preventDefault()
 
     api.post(`schedules/${id}/open`)
@@ -56,18 +49,13 @@ export default function DetailMatakuliah() {
     <Grid item container spacing={5}>
       {/* Judul dan tombol export */}
       <Grid container item spacing={2}>
-        <Grid item sm={8} md={8} xs={12}>
+        <Grid item sm={8} md={8} xs={6}>
           <Typography variant="h5">{subject}</Typography>
           <Typography>{slug}</Typography>
         </Grid>
-        <Grid container item xs={12} sm={4} md={4} justify="flex-end">
-          <Grid
-            component={Link}
-            to="/matakuliah/3/presensi"
-            item
-            style={{ textDecoration: "none" }}
-          >
-            <Button size="small" variant="contained" color="primary" >
+        <Grid container item xs={6} sm={4} md={4} justify="flex-end">
+          <Grid item>
+            <Button size="small" variant="contained" color="primary" onClick={onPresensiClicked} >
               Buka Presensi
             </Button>
           </Grid>

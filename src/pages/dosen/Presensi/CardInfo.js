@@ -5,10 +5,10 @@ import { COLORS } from "./../../../constants";
 import { Link, useHistory } from "react-router-dom";
 import { api } from "./../../../utils/api";
 
-const CardInfo = ({ id }) => {
+const CardInfo = ({ id, data }) => {
   const history = useHistory();
-  const [hadir, setHadir] = useState(12)
-  const [tidakHadir, setTidakHadir] = useState(18)
+  const [hadir, setHadir] = useState()
+  const [alpa, setAlpa] = useState()
 
   React.useEffect(() => {}, []);
 
@@ -24,13 +24,32 @@ const CardInfo = ({ id }) => {
       });
   };
 
+  function summerize() {
+    let hadirCounter = 0;
+    let alpaCounter = 0;
+
+    for (let key in data) {
+      switch (key.status) {
+        case "alpa":
+          alpaCounter++;
+          break;
+        default:
+          hadirCounter++;
+          break;
+      }
+    }
+
+    setHadir(hadirCounter);
+    setAlpa(alpaCounter);
+  }
+
   const dataSet = {
     data: {
       labels: ["Hadir", "Tidak Hadir"],
       datasets: [
         {
           label: "Hadir",
-          data: [hadir, tidakHadir],
+          data: [hadir, alpa],
           backgroundColor: [COLORS.secondaryLight, COLORS.secondaryDark],
         },
       ],
@@ -86,7 +105,7 @@ const CardInfo = ({ id }) => {
             color="primary"
             style={{ fontWeight: "700", paddingBottom: ".15em" }}
           >
-            {hadir} / {hadir + tidakHadir}
+            {hadir} / {hadir + alpa}
           </Typography>
         </Grid>
         <Grid
@@ -113,11 +132,9 @@ const CardInfo = ({ id }) => {
           container
           xs={12}
         >
-          <Link to="/matakuliah/1" style={{ textDecoration: "none" }}>
-            <Button variant="contained" color="primary" size="small" >
+            <Button variant="contained" color="primary" size="small" onClick={onCloseClick}>
               Tutup Presensi
             </Button>
-          </Link>
         </Grid>
       </Grid>
     </Grid>

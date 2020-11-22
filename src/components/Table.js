@@ -8,12 +8,13 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TablePagination from "@material-ui/core/TablePagination";
 import TableRow from "@material-ui/core/TableRow";
-import {Typography} from '@material-ui/core'
-import {COLORS} from './../../../constants'
+import { Typography, Grid } from "@material-ui/core";
+import { COLORS } from "./../constants";
+import moment from 'moment'
 
 const columns = [
-  { id: "nrp", label: "NRP", minWidth: 100 , align: 'center'},
-  { id: "nama", label: "Nama", minWidth: 200, align: 'center'},
+  { id: "nrp", label: "NRP", minWidth: 100, align: "center" },
+  { id: "nama", label: "Nama", minWidth: 200, align: "center" },
   {
     id: "waktu",
     label: "Waktu",
@@ -24,47 +25,30 @@ const columns = [
 ];
 
 function createData(nrp, nama, waktu, status) {
-  let color
+  let color;
   switch (status) {
-    case 'hadir':
-      color = COLORS.status.hadir
+    case "hadir":
+      color = COLORS.status.hadir;
       break;
-    case 'alpa':
-      color = COLORS.status.alpa
+    case "alpa":
+      color = COLORS.status.alpa;
       break;
-    case 'izin':
-      color = COLORS.status.izin
+    case "izin":
+      color = COLORS.status.izin;
       break;
-    case 'terlambat':
-      color = COLORS.status.telat
+    case "terlambat":
+      color = COLORS.status.telat;
       break;
-  }
-  waktu = waktu.getHours() + ":" + waktu.getMinutes() 
-  waktu = waktu.toString()
-  console.log(waktu)
-  return { nrp, nama, waktu, color};
+    }
+    if (waktu === null)
+        waktu = 'Alpa'
+    else if (status === 'izin')
+        waktu = 'Izin'
+    else
+        waktu = moment(waktu).format('H:mm')
+    
+  return { nrp, nama, waktu, color };
 }
-
-const rows = [
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'terlambat'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'alpa'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'izin'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'terlambat'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'izin'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  createData(2110181026, "Muhammad Riza Bachtiar",new Date(), 'hadir'),
-  
-];
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -74,19 +58,33 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: 370,
     minHeight: 350,
     [theme.breakpoints.down("sm")]: {
-      maxWidth: 350
-    }
+      maxWidth: 370,
+    },
   },
 }));
 
-export default function StickyHeadTable({data}) {
+export default function StickyHeadTable({ data }) {
   const classes = useStyles();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [dataTable, setDataTable] = React.useState([]);
 
   React.useEffect(() => {
-    
-  },[])
+      setDataTable(myRow());
+      console.log(data)
+  }, [data]);
+
+  function myRow() {
+    let array = [];
+
+    for (let key in data) {
+      array.push(
+        createData(data[key].student.id, data[key].student.name, data[key].time, data[key].status)
+        );
+    }
+
+    return array;
+  }
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -98,9 +96,13 @@ export default function StickyHeadTable({data}) {
   };
 
   return (
-    <Paper className={classes.root}>
+    <Paper component={Grid} item container className={classes.root}>
       <TableContainer className={classes.container}>
-        <Table stickyHeader aria-label="sticky table">
+        <Table
+          stickyHeader
+          aria-label="sticky table"
+          style={{ tableLayout: "fixed" }}
+        >
           <TableHead>
             <TableRow>
               {columns.map((column) => (
@@ -115,19 +117,28 @@ export default function StickyHeadTable({data}) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {dataTable
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
                   <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                     {columns.map((column) => {
                       const value = row[column.id];
-                      console.log(value)
+                      console.log(value);
                       return (
                         <TableCell key={column.id} align={column.align}>
-                          {column.id === "waktu"
-                            ? (<Typography style={{fontWeight: '700', color: `${row.color}` }}>{value}</Typography>)
-                            : value}
+                          {column.id === "waktu" ? (
+                            <Typography
+                              style={{
+                                fontWeight: "700",
+                                color: `${row.color}`,
+                              }}
+                            >
+                              {value}
+                            </Typography>
+                          ) : (
+                            <Typography variant="subtitle2">{value}</Typography>
+                          )}
                         </TableCell>
                       );
                     })}
@@ -140,7 +151,7 @@ export default function StickyHeadTable({data}) {
       <TablePagination
         rowsPerPageOptions={[10, 25, 100]}
         component="div"
-        count={rows.length}
+        count={dataTable.length}
         rowsPerPage={rowsPerPage}
         page={page}
         onChangePage={handleChangePage}

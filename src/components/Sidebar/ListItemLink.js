@@ -18,13 +18,11 @@ export default function ListItemLink(props) {
   );
 
   const logoutClick = (e) => {
-    e.preventDefault();
     api
-      .post("auth/logout")
+      .post('auth/logout')
       .then((res) => {
         console.log(res);
         logout();
-        history.push("/login");
       })
       .catch((err) => {
         console.log(err);

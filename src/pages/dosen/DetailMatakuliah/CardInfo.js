@@ -3,54 +3,87 @@ import { Paper, Grid, Typography } from "@material-ui/core";
 import { Doughnut } from "react-chartjs-2";
 import { COLORS } from "./../../../constants";
 
-const fakeData = [
-  {
-    name: "Hadir",
-    amount: 100,
-    color: COLORS.status.hadir,
-  },
-  {
-    name: "Izin",
-    amount: 8,
-    color: COLORS.status.izin,
-  },
-  {
-    name: "Terlambat",
-    amount: 12,
-    color: COLORS.status.telat,
-  },
-  {
-    name: "Alpa",
-    amount: 2,
-    color: COLORS.status.alpa,
-  },
-];
+export default function CardInfo({data}) {
+  const [hadir, setHadir] = React.useState();
+  const [telat, setTelat] = React.useState();
+  const [izin, setIzin] = React.useState();
+  const [alpa, setAlpa] = React.useState();
 
-const dataSet = {
-  data: {
-    labels: ["Hadir", "Izin", "Terlambat", "Alpa"],
-    datasets: [
-      {
-        label: "Hadir",
-        data: [100, 8, 12, 2],
-        backgroundColor: [
-          COLORS.status.hadir,
-          COLORS.status.izin,
-          COLORS.status.telat,
-          COLORS.status.alpa,
-        ],
-      },
-    ],
-  },
-};
+  React.useEffect(() => {
+    summerize()
+    console.log(data)
+  }, [data])
+  
+  const summary = [
+    {
+      name: "Hadir",
+      amount: hadir,
+      color: COLORS.status.hadir,
+    },
+    {
+      name: "Izin",
+      amount: izin,
+      color: COLORS.status.izin,
+    },
+    {
+      name: "Terlambat",
+      amount: telat,
+      color: COLORS.status.telat,
+    },
+    {
+      name: "Alpa",
+      amount: alpa,
+      color: COLORS.status.alpa,
+    },
+  ];
 
-const CardInfo = () => {
+  const dataChart = {
+    data: {
+      labels: ["Hadir", "Izin", "Terlambat", "Alpa"],
+      datasets: [
+        {
+          label: "Hadir",
+          data: [hadir, izin, telat, alpa],
+          backgroundColor: [
+            COLORS.status.hadir,
+            COLORS.status.izin,
+            COLORS.status.telat,
+            COLORS.status.alpa,
+          ],
+        },
+      ],
+    },
+  };
+
+  function summerize() {
+    let hadirCounter = 0;
+    let alpaCounter = 0;
+    let izinCounter = 0;
+    let telatCounter = 0;
+
+    for (let key in data) {
+
+      switch (data[key].status) {
+        case "hadir": hadirCounter++; break;
+        case "izin": izinCounter++; break;
+        case "alpa": alpaCounter++; break;
+        case "telat": telatCounter++; break;
+        default: break;
+      }
+    }
+
+    setHadir(hadirCounter)
+    setIzin(izinCounter)
+    setAlpa(alpaCounter)
+    setTelat(telatCounter)
+  }
+
   return (
-    <Grid container component={Paper} style={{ padding: "1em"}}>
+    <Grid container component={Paper} style={{ padding: "1.3em"}}>
       <Grid item container xs={12} justify='center' alignContent='center' alignItems='center'>
         <Doughnut
            height={180}
-          data={dataSet.data}
+          data={dataChart.data}
           options={{
             responsive: true,
             title: {
@@ -63,7 +96,7 @@ const CardInfo = () => {
         />
       </Grid>
       <Grid item container xs={12}>
-        {fakeData.map((key, index) => (
+        {summary.map((key, index) => (
           <Grid
             container
             item
@@ -73,8 +106,8 @@ const CardInfo = () => {
             key={index}
             component={Paper}
             //   square
-            //   spacing={3}
-            //   style={{ padding: ".5em 0" }}
+              // spacing={3}
+              style={{ padding: "1em 0" }}
           >
             <Typography
               align="center"
@@ -96,5 +129,3 @@ const CardInfo = () => {
     </Grid>
   );
 };
-
-export default CardInfo;
