@@ -35,7 +35,7 @@ export default function DetailMatakuliah() {
   let view = (
     <Grid container spacing={3} xs={12}>
       <Grid container item spacing={2}>
-        <Grid item sm={8} md={8} xs={12}>
+        <Grid item xs={6}>
           <Typography variant="h5" gutterBottom>
             {subject}
           </Typography>
@@ -43,7 +43,7 @@ export default function DetailMatakuliah() {
             {slug} - {moment(time).format("DD MMM YY")}
           </Typography>
         </Grid>
-        <Grid container item xs={12} sm={4} md={4} justify="flex-end">
+        <Grid container item xs={6} justify="flex-end">
           <Grid item>
             <Button size="small" variant="contained" color="primary">
               Export PDF
