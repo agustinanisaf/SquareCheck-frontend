@@ -48,13 +48,13 @@ const FormLogin = () => {
       })
       .then((res) => {
         // TODO: Save ID User
-        if (res.data.data.user.role !== "lecturer") {
+        if (res.data.data.role !== "lecturer") {
           logout()
           console.log("youre not lecturer")
           throw new Error(res)
         }
-        localStorage.setItem('name', res.data.data.user.name)
-        localStorage.setItem("id", res.data.data.user.id);
+        localStorage.setItem('name', res.data.data.name)
+        localStorage.setItem("id", res.data.data.id);
         history.push("/");
       })
       .catch((err) => {
