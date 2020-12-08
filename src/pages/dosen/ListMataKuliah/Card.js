@@ -8,15 +8,18 @@ const CardComponent = ({ subject }) => {
   return (
     <Grid
       container
+      md={4}
+      sm={6}
+      item
       to={`/matakuliah/${subject.id}`}
       component={Link}
       className={classes.CardComponent}
-      style={{ height: "100%", textDecoration: "none" }}
+      style={{ height: "100%", textDecoration: "none", width: "100%" }}
     >
-      <Card component={Grid} container>
-        <CardContent component={Grid} container>
-          <Grid sm={10} container>
-            <Grid item sm={10}>
+      <Card component={Grid} container item style={{height : "100%"}}>
+        <CardContent component={Grid} item container>
+          <Grid xs={10} container>
+            <Grid item xs={12}>
               <Typography
                 variant="h6"
                 gutterBottom
@@ -25,14 +28,14 @@ const CardComponent = ({ subject }) => {
                 {subject.name}
               </Typography>
             </Grid>
-            <Grid item container alignContent="flex-end" sm={10}>
+            <Grid item container alignContent="flex-end" xs={12}>
               <Typography variant="subtitle1">
                 {subject.classroom.slug}
               </Typography>
             </Grid>
           </Grid>
-          <Grid sm={2} direction="column" justify="center" container>
-              <NavigateNextIcon alignItems="center"></NavigateNextIcon>
+          <Grid xs={2} direction="column" justify="center" container>
+            <NavigateNextIcon alignItems="center"></NavigateNextIcon>
           </Grid>
         </CardContent>
       </Card>

@@ -2,7 +2,8 @@ import React from "react";
 import classes from "./Login.module.scss";
 import { Grid, Typography, Hidden } from "@material-ui/core";
 import FormLogin from "./FormLogin";
-import {COLORS} from './../../constants'
+import { COLORS } from './../../constants'
+import {logo, typeLogo, hiIllus} from './../../assets'
 
 const Login = () => {
   return (
@@ -12,12 +13,24 @@ const Login = () => {
         xs={12}
         sm={4}
         container
-        justify="center"
+        // justify="center"
         direction="column"
         className={classes.Form}
       >
-        
-        <FormLogin />
+        <Grid container item justify="center" alignContent="center" style={{ padding: "1em", height: "120px" }}>
+          <img src={logo} style={{ height: "25px" }} />
+          <img src={typeLogo} style={{ height: "25px", paddingLeft: "10px" }} />
+          {/* <img src={hiIllus }/> */}
+        </Grid>
+        <Grid
+          item
+          container
+          direction="column"
+          justify="center"
+          style={{ height: "calc(100vh - 220px)" }}
+        >
+          <FormLogin />
+        </Grid>
       </Grid>
       <Hidden smDown>
         <Grid
@@ -26,7 +39,7 @@ const Login = () => {
           container
           justify="center"
           direction="column"
-          style={{backgroundColor: `${COLORS.secondary}`}}
+          style={{ backgroundColor: `${COLORS.secondary}` }}
           className={classes.Side}
         >
           <Typography

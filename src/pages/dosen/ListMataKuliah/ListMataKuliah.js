@@ -4,17 +4,16 @@ import classes from "./ListMataKuliah.module.scss";
 import MataKuliahCard from "./Card";
 import { api } from "../../../utils/api";
 import Carousel from "react-material-ui-carousel";
+import { splitToChunk } from "../../../utils/utility";
 
 const SlideCarousel = ({ subjects }) => {
   return (
-    <Grid container className={classes.ListMataKuliah}>
-      {subjects.map((subject) => {
-        return (
-          <Grid key={subject.id} md={4} sm={6} item className={classes.Card}>
+    <Grid container spacing={2} className={classes.ListMataKuliah}>
+      {subjects.map((subject) => 
+          
             <MataKuliahCard key={subject.id} subject={subject} />
-          </Grid>
-        );
-      })}
+          
+      )}
     </Grid>
   );
 };
@@ -23,19 +22,15 @@ const ListMataKuliah = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [subjects, setSubjects] = useState();
-  const [page, setPage] = useState(1);
-  const [hasNext, setHasNext] = useState(false);
-  const [hasPrev, setHasPrev] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
     api
       // TODO: Check if subjects correct with Authorization
-      .get(`subjects`, { params: { page: page } })
+      .get(`subjects`)
       .then((res) => {
-        setHasNext(res.data.links.next);
-        setHasPrev(res.data.links.prev);
-        setSubjects(res.data.data);
+        const dataChunk = splitToChunk(res.data.data, 9);
+        setSubjects(dataChunk);
         setIsLoading(false);
       })
       .catch((err) => {
@@ -43,7 +38,7 @@ const ListMataKuliah = () => {
         setIsError(true);
         setIsLoading(false);
       });
-  }, [page]);
+  }, []);
 
   return isLoading ? (
     // TODO: Change Loading Center Page
@@ -51,13 +46,15 @@ const ListMataKuliah = () => {
       <CircularProgress />
     </Grid>
   ) : !isError && subjects ? (
-    <Carousel
-      autoPlay={false}
-      next={() => (hasNext ? setPage((page) => page + 1) : null)}
-      prev={() => (hasPrev ? setPage((page) => page - 1) : null)}
-    >
-      <SlideCarousel subjects={subjects} />
-    </Carousel>
+      <Grid container justify="center" alignContent="center" alignItems="center" style={{height: "100%"}}>
+        <Carousel
+          autoPlay={false}
+          >
+            {subjects.map((data, index) => (
+              <SlideCarousel key={index} subjects={data} />
+            ))}
+        </Carousel>
+      </Grid>
   ) : (
     // TODO: Change Error Page
     <Grid>

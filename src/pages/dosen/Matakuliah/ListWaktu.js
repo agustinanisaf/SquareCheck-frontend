@@ -15,7 +15,7 @@ function SlideCarousel({ listData }) {
 }
 
 export default function ListWaktu({ data, sizeData }) {
-  const dataChunk = splitToChunk(data, sizeData, 9);
+  const dataChunk = splitToChunk(data, 9);
 
   return (
     <Grid container item>

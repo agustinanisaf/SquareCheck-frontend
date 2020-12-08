@@ -1,4 +1,4 @@
-export function splitToChunk(array,lenght,size) {
+export function splitToChunk(array,size) {
     const chunked_arr = [];
     let index = 0;
     while (index < array.length) {

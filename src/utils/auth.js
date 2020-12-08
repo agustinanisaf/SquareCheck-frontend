@@ -2,7 +2,7 @@ import Cookie from "js-cookie";
 import { api } from "./api";
 
 export const login = (data) => {
-  Cookie.set("tokenSquareCheck", data.token, {expires : 0.041666});
+  Cookie.set("tokenSquareCheck", data.token, );
   // localStorage.setItem("expireToken", new Date().getTime());  
   api.defaults.headers.common["Authorization"] = `Bearer ${data.token}`;
 };
@@ -13,10 +13,11 @@ export const logout = () => {
 };
 
 export const isLogin = () => {
-  if (Cookie.get("tokenSquareCheck")) {
-    return true;
+  if (!Cookie.get("tokenSquareCheck")) {
+    logout()
+    return false;
   }
-  return false;
+  return true;
 };
 
 // const isExpire = () => {
