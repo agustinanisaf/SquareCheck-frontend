@@ -1,22 +1,23 @@
-import React, {useState, useEffect} from "react";
-import { Grid, Paper, Typography, Button } from "@material-ui/core";
-import {api} from "./../../../utils/api"
+import React, { useState, useEffect } from "react";
+import {
+  Grid,
+  Paper,
+  Typography,
+  Button,
+  CircularProgress,
+} from "@material-ui/core";
+import { api } from "./../../../utils/api";
 import Charts from "./Charts/Charts";
-import ListWaktu from './ListWaktu'
-import { useParams, Link } from 'react-router-dom'
-
-const fakeListCard = () => {
-  let data = []
-  for (let i = 0; i < 30; i++)
-    data.push(i)
-  return data
-}
+import ListWaktu from "./ListWaktu";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 export default function DetailMatakuliah() {
-  const { id } = useParams()
+  const { id } = useParams();
+  const history = useHistory();
   const [subject, setSubject] = useState();
   const [slug, setSlug] = useState();
   const [listWaktu, setListWaktu] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     api
@@ -26,35 +27,66 @@ export default function DetailMatakuliah() {
         setSlug(res.data.data.classroom.slug);
         return api.get(`subjects/${id}/schedules`, {
           params: {
-            limit: 100
-          }
+            limit: 100,
+          },
         });
       })
       .then((res) => {
-        console.log(res.data.data)
+        console.log(res.data.data);
         setListWaktu(res.data.data);
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  return (
-    <Grid item container spacing={5}>
+  const onPresensiClicked = (e) => {
+    e.preventDefault();
+
+    api
+      .post(`schedules/${id}/open`)
+      .then((res) => {
+        history.push(`/matakuliah/${id}/presensi`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  return loading ? (
+    <Grid
+      item
+      container
+      alignItems="center"
+      justify="center"
+      alignContent="center"
+    >
+      <CircularProgress />
+    </Grid>
+  ) : (
+    <Grid
+      item
+      container
+      alignItems="center"
+      justify="center"
+      alignContent="center"
+      spacing={5}
+    >
       {/* Judul dan tombol export */}
       <Grid container item spacing={2}>
-        <Grid item sm={8} md={8} xs={12}>
+        <Grid item sm={8} md={8} xs={6}>
           <Typography variant="h5">{subject}</Typography>
           <Typography>{slug}</Typography>
         </Grid>
-        <Grid container item xs={12} sm={4} md={4} justify="flex-end">
-          <Grid
-            component={Link}
-            to="/matakuliah/3/presensi"
-            item
-            style={{ textDecoration: "none" }}
-          >
-            <Button size="small" variant="contained" color="primary">
+        <Grid container item xs={6} sm={4} md={4} justify="flex-end">
+          <Grid item>
+            <Button
+              size="small"
+              variant="contained"
+              color="primary"
+              onClick={onPresensiClicked}
+            >
               Buka Presensi
             </Button>
           </Grid>
@@ -68,11 +100,7 @@ export default function DetailMatakuliah() {
 
       {/* List Hari matakuliah */}
       {/* <Grid container item> */}
-      <ListWaktu
-        data={listWaktu}
-        id={id}
-        sizeData={listWaktu.length}
-      />
+      <ListWaktu data={listWaktu} id={id} sizeData={listWaktu.length} />
       {/* </Grid> */}
     </Grid>
   );

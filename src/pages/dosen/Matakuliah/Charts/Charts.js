@@ -1,7 +1,8 @@
 import React from "react";
 import CardChart from "./CardChart";
-import {Grid} from '@material-ui/core'
-import { COLORS } from './../../../../constants'
+import { Grid, Hidden } from "@material-ui/core";
+import { COLORS } from "./../../../../constants";
+import Carousel from "react-material-ui-carousel";
 
 const rand = () => {
   return Math.random();
@@ -75,10 +76,11 @@ export default function Charts() {
     },
   ];
 
-    return (
-      <Grid container spacing={2}>
+  return (
+    <Grid container spacing={2}>
+      <Hidden smDown>
         {listChart.map((data) => (
-          <Grid item xs={6} sm={6} md={3}>
+          <Grid item xs={6} md={3}>
             <CardChart
               name={data.name}
               spacing={2}
@@ -87,6 +89,21 @@ export default function Charts() {
             />
           </Grid>
         ))}
-      </Grid>
-    );
+      </Hidden>
+      <Hidden smUp>
+        <Grid container component={Carousel}>
+          {listChart.map((data) => (
+            <Grid container item style={{ height: "150px" }} xs={12}>
+              <CardChart
+                name={data.name}
+                spacing={2}
+                dataset={data.data}
+                color={data.color}
+              />
+            </Grid>
+          ))}
+        </Grid>
+      </Hidden>
+    </Grid>
+  );
 }

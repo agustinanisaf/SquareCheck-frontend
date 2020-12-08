@@ -16,7 +16,7 @@ const CardComponent = ({ subject }) => {
       className={classes.CardComponent}
       style={{ height: "100%", textDecoration: "none", width: "100%" }}
     >
-      <Card component={Grid} container item>
+      <Card component={Grid} container item style={{height : "100%"}}>
         <CardContent component={Grid} item container>
           <Grid xs={10} container>
             <Grid item xs={12}>
