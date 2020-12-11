@@ -7,6 +7,7 @@ import {
   CircularProgress,
 } from "@material-ui/core";
 import { api } from "./../../../utils/api";
+import { logout } from "./../../../utils/auth";
 import Charts from "./Charts/Charts";
 import ListWaktu from "./ListWaktu";
 import { useParams, Link, useHistory } from "react-router-dom";
@@ -38,6 +39,10 @@ export default function DetailMatakuliah() {
       })
       .catch((err) => {
         console.log(err);
+        if (err.response.status == 401) {
+          logout();
+          history.push("/login");
+        }
       });
   }, []);
 
