@@ -3,8 +3,10 @@ import { Grid, Typography, CircularProgress } from "@material-ui/core";
 import classes from "./ListMataKuliah.module.scss";
 import MataKuliahCard from "./Card";
 import { api } from "../../../utils/api";
+import { logout } from "./../../../utils/auth";
 import Carousel from "react-material-ui-carousel";
 import { splitToChunk } from "../../../utils/utility";
+import {useHistory} from "react-router-dom"
 
 const SlideCarousel = ({ subjects }) => {
   return (
@@ -19,6 +21,7 @@ const SlideCarousel = ({ subjects }) => {
 };
 
 const ListMataKuliah = () => {
+  const history = useHistory()
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [subjects, setSubjects] = useState();
@@ -37,6 +40,10 @@ const ListMataKuliah = () => {
         console.warn(err);
         setIsError(true);
         setIsLoading(false);
+        if (err.response.status == 401) {
+          logout();
+          history.push("/login");
+        }
       });
   }, []);
 

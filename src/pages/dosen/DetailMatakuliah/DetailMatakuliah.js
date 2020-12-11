@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Grid, Typography, Button, CircularProgress } from "@material-ui/core";
 import Table from "./../../../components/Table";
 import CardInfo from "./CardInfo";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import { logout } from "./../../../utils/auth";
 import { api } from "./../../../utils/api";
 import moment from "moment";
 
@@ -13,6 +14,7 @@ export default function DetailMatakuliah() {
   const [time, setTime] = useState();
   const [slug, setSlug] = useState();
   const [loading, setLoading] = useState(true);
+  const history = useHistory()
 
   React.useEffect(() => {
     api
@@ -31,6 +33,10 @@ export default function DetailMatakuliah() {
       })
       .catch((err) => {
         console.log(err);
+        if (err.response.status == 401) {
+          logout();
+          history.push("/login");
+        }
       });
   }, []);
 

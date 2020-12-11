@@ -4,10 +4,13 @@ import classes from "./Dashboard.module.scss";
 import CardComponent from "./Card";
 import { COLORS } from "./../../../constants";
 import { api } from "./../../../utils/api";
+import { logout } from "../../../utils/auth";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const [data, setData] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
+  const history = useHistory()
 
   React.useEffect(() => {
     api
@@ -19,6 +22,10 @@ const Dashboard = () => {
       })
       .catch((err) => {
         console.log(err);
+        if (err.response.status == 401) {
+          logout()
+          history.push('/login')
+        }
       });
   }, []);
 
