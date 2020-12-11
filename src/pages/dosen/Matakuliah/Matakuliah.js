@@ -98,15 +98,21 @@ export default function DetailMatakuliah() {
         </Grid>
       </Grid>
 
-      {/* Chart */}
-      <Grid container item spacing={2}>
-        <Charts />
-      </Grid>
+      {listWaktu.length == 0 ? (
+        <Typography variant="h2">Tidak ada riwayat absensi</Typography>
+      ) : (
+        <>
+          {/* Chart */}
+          <Grid container item spacing={2}>
+            <Charts />
+          </Grid>
 
-      {/* List Hari matakuliah */}
-      {/* <Grid container item> */}
-      <ListWaktu data={listWaktu} id={id} sizeData={listWaktu.length} />
-      {/* </Grid> */}
+          {/* List Hari matakuliah */}
+          {/* <Grid container item> */}
+          <ListWaktu data={listWaktu} id={id} sizeData={listWaktu.length} />
+          {/* </Grid> */}
+        </>
+      )}
     </Grid>
   );
 }

@@ -56,7 +56,7 @@ const FormLogin = () => {
         }
         localStorage.setItem('name', res.data.data.name)
         localStorage.setItem("id", res.data.data.id);
-        history.push("/");
+        history.push("/home");
       })
       .catch((err) => {
         console.warn(err);

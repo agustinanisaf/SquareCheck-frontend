@@ -11,7 +11,7 @@ export default function Sidebar() {
   const navList = [
     {
       name: "Home",
-      path: "/",
+      path: "/home",
       icon: <Home />,
     },
     {

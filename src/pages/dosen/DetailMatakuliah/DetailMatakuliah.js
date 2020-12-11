@@ -59,24 +59,26 @@ export default function DetailMatakuliah() {
       alignContent="center"
       alignItems="center"
     >
-      <div>
-        <Grid container item spacing={2}>
-          <Grid item xs={6}>
-            <Typography variant="h5" gutterBottom>
-              {subject}
-            </Typography>
-            <Typography>
-              {slug} - {moment(time).format("DD MMM YY")}
-            </Typography>
-          </Grid>
-          <Grid container item xs={6} justify="flex-end">
-            <Grid item>
-              <Button size="small" variant="contained" color="primary">
-                Export PDF
-              </Button>
-            </Grid>
+      <Grid container item spacing={2}>
+        <Grid item xs={6}>
+          <Typography variant="h5" gutterBottom>
+            {subject}
+          </Typography>
+          <Typography>
+            {slug} - {moment(time).format("DD MMM YY")}
+          </Typography>
+        </Grid>
+        <Grid container item xs={6} justify="flex-end">
+          <Grid item>
+            <Button size="small" variant="contained" color="primary">
+              Export PDF
+            </Button>
           </Grid>
         </Grid>
+      </Grid>
+      {dataTable.length == 0 ? (
+        <Typography variant="h2">Tidak ada presensi</Typography>
+      ) : (
         <Grid item container spacing={2}>
           <Grid item container sm={12} xs={12} md={4}>
             <CardInfo data={dataTable} />
@@ -85,7 +87,7 @@ export default function DetailMatakuliah() {
             <Table data={dataTable} />
           </Grid>
         </Grid>
-      </div>
+      )}
     </Grid>
   );
 
