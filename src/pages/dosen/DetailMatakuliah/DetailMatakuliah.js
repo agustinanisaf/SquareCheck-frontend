@@ -70,14 +70,18 @@ export default function DetailMatakuliah() {
           </Grid>
         </Grid>
       </Grid>
-      <Grid item container spacing={2}>
-        <Grid item container sm={12} xs={12} md={4}>
-          <CardInfo data={dataTable} />
+      {dataTable.length == 0 ? (
+        <Typography variant="h2">Tidak ada presensi</Typography>
+      ) : (
+        <Grid item container spacing={2}>
+          <Grid item container sm={12} xs={12} md={4}>
+            <CardInfo data={dataTable} />
+          </Grid>
+          <Grid item container sm={12} xs={12} md={8}>
+            <Table data={dataTable} />
+          </Grid>
         </Grid>
-        <Grid item container sm={12} xs={12} md={8}>
-          <Table data={dataTable} />
-        </Grid>
-      </Grid>
+      )}
     </Grid>
   );
 
