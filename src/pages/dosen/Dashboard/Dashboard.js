@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, CircularProgress } from "@material-ui/core";
+import { Grid, CircularProgress, Typography } from "@material-ui/core";
 import classes from "./Dashboard.module.scss";
 import CardComponent from "./Card";
 import { COLORS } from "./../../../constants";
@@ -42,7 +42,7 @@ const Dashboard = () => {
       alignContent="center"
       spacing={4}
     >
-      {data.map((dataKey, i) => (
+      {data.length == 0 ? (<Typography variant="h5">Tidak ada riwayat presensi</Typography>) : data.map((dataKey, i) => (
         <Grid key={i} md={4} sm={6} item className={classes.Card}>
           <CardComponent data={dataKey} />
         </Grid>

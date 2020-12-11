@@ -53,33 +53,31 @@ export default function DetailMatakuliah() {
       alignContent="center"
       alignItems="center"
     >
-      <div>
-        <Grid container item spacing={2}>
-          <Grid item xs={6}>
-            <Typography variant="h5" gutterBottom>
-              {subject}
-            </Typography>
-            <Typography>
-              {slug} - {moment(time).format("DD MMM YY")}
-            </Typography>
-          </Grid>
-          <Grid container item xs={6} justify="flex-end">
-            <Grid item>
-              <Button size="small" variant="contained" color="primary">
-                Export PDF
-              </Button>
-            </Grid>
+      <Grid container item spacing={2}>
+        <Grid item xs={6}>
+          <Typography variant="h5" gutterBottom>
+            {subject}
+          </Typography>
+          <Typography>
+            {slug} - {moment(time).format("DD MMM YY")}
+          </Typography>
+        </Grid>
+        <Grid container item xs={6} justify="flex-end">
+          <Grid item>
+            <Button size="small" variant="contained" color="primary">
+              Export PDF
+            </Button>
           </Grid>
         </Grid>
-        <Grid item container spacing={2}>
-          <Grid item container sm={12} xs={12} md={4}>
-            <CardInfo data={dataTable} />
-          </Grid>
-          <Grid item container sm={12} xs={12} md={8}>
-            <Table data={dataTable} />
-          </Grid>
+      </Grid>
+      <Grid item container spacing={2}>
+        <Grid item container sm={12} xs={12} md={4}>
+          <CardInfo data={dataTable} />
         </Grid>
-      </div>
+        <Grid item container sm={12} xs={12} md={8}>
+          <Table data={dataTable} />
+        </Grid>
+      </Grid>
     </Grid>
   );
 

@@ -23,7 +23,7 @@ export default function MyBreadcrumbs() {
                   style={{ textTransform: "capitalize",}}
                 >
                   {console.log(value)}
-                  {value === "" ? "Home" : value}
+                  {value == "/" ? "Home" : value}
                 </Typography>
               ) : (
                   <Link
