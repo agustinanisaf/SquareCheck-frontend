@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router, Redirect } from "react-router-dom";
 import "./App.css";
 import {
   createMuiTheme,
@@ -75,6 +75,9 @@ function App() {
               </Switch>
             </Layout>
           </Route>
+          <Route path="/" render={() => (
+            <Redirect to="/home"/>
+          )}/>
           <Route path="*" component={ErrorPage} />
         </Switch>
       </Router>
