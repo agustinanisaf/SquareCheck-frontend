@@ -1,0 +1,25 @@
+.Title {
+    position: relative;
+    color: #333;
+
+    &::after {
+        position: absolute;
+        content: '';
+        height: .2em;
+        width: 1.5em;
+        background-color: dodgerblue;
+        bottom: -.3em;
+        left: 0;
+    }
+
+    &::before {
+        position: absolute;
+        content: '';
+        height: .2em;
+        width: .5em;
+        background-color: rgb(7, 83, 158);
+        bottom: -.3em;
+        left: 0;
+        z-index: 2;
+    }
+}

@@ -1,0 +1,13 @@
+.Name{
+    position: relative;
+    
+    &::after {
+        position: absolute;
+        content: ' ';
+        background-color: #444;
+        height: .2em;
+        width: 1.5em;
+        left: 105%;
+        top: 50%;
+    }
+}

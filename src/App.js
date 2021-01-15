@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Switch, Route, BrowserRouter as Router, Redirect } from "react-router-dom";
 import "./App.css";
 import {
   createMuiTheme,
@@ -59,7 +59,7 @@ function App() {
               component={val.component}
               restricted={val.restricted}
             />
-          ))}
+          ))} 
           <Route exact path={["/home", "/matakuliah", "/matakuliah/*"]}>
             <Layout>
               <Switch>
