@@ -1,4 +1,5 @@
 import Login from './pages/login/Login'
+import landingPage from './pages/landingPage'
 import {
   Dashboard as DosenDashboard,
   ListMatakuliah,
@@ -15,6 +16,13 @@ export const PUBLIC_ROUTES = [
     exact: true,
     restricted: true,
   },
+  {
+    name: 'Landing Page',
+    path: '/',
+    component: landingPage,
+    exact: true,
+    restricted: true
+  }
 ];
 
 export const DOSEN_ROUTES = [

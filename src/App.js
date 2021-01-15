@@ -59,7 +59,7 @@ function App() {
               component={val.component}
               restricted={val.restricted}
             />
-          ))}
+          ))} 
           <Route exact path={["/home", "/matakuliah", "/matakuliah/*"]}>
             <Layout>
               <Switch>

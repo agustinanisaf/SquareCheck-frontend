@@ -1,0 +1,19 @@
+.Hero {
+    position: relative;
+    
+
+        &::after{
+            position: absolute;
+            content: 'Square Checks';
+            height: 100%;
+            width: 100%;
+            z-index: 4;
+            color: rgba(255,255,255,.1);
+            overflow: hidden;    
+            top: 100%;
+            // right: -50%;
+            // transform: rotate(90deg);    
+            font-weight: 600;
+            font-size: 15em;
+    }
+}

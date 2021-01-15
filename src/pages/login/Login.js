@@ -17,7 +17,13 @@ const Login = () => {
         direction="column"
         className={classes.Form}
       >
-        <Grid container item justify="center" alignContent="center" style={{ padding: "1em", height: "120px" }}>
+        <Grid
+          container
+          item
+          justify="center"
+          alignContent="center"
+          style={{ padding: "1em", height: "120px" }}
+        >
           <img src={logo} style={{ height: "25px" }} />
           <img src={typeLogo} style={{ height: "25px", paddingLeft: "10px" }} />
           {/* <img src={hiIllus }/> */}
@@ -42,22 +48,29 @@ const Login = () => {
           style={{ backgroundColor: `${COLORS.secondary}` }}
           className={classes.Side}
         >
-          <Typography
-            variant="h2"
-            style={{ fontWeight: "600", color: "white", lineHeight: "1em" }}
-          >
-            Absen
-            <br /> Tanpa Ribet
-          </Typography>
-          <Typography
-            variant="h6"
-            style={{ fontWeight: "400", color: "white", paddingTop: "1.5em" }}
-          >
-            Ingin aplikasi absensi yang mudah dan cepat? Square Checks solusi
-            untuk Anda dengan fitur One-Click absen dan reminder ketika presensi
-            kelas sudah dibuka serta dilengkapi dengan rekap absensi yang dapat
-            diekspor ke PDF.
-          </Typography>
+          <div style={{ maxWidth: "550px" }}>
+            <Typography
+              variant="h2"
+              style={{ fontWeight: "600", color: "white", lineHeight: "1em" }}
+            >
+              Absen
+              <br /> Tanpa Ribet
+            </Typography>
+            <Typography
+              variant="body1"
+              style={{
+                fontWeight: "400",
+                color: "rgba(255,255,255,85%)",
+                paddingTop: "1.5em",
+                lineHeight: "1.7em",
+              }}
+            >
+              Ingin aplikasi absensi yang mudah dan cepat? Square Checks solusi
+              untuk Anda dengan fitur One-Click absen dan reminder ketika
+              presensi kelas sudah dibuka serta dilengkapi dengan rekap absensi
+              yang dapat diekspor ke PDF.
+            </Typography>
+          </div>
           <div className={classes.image}></div>
         </Grid>
       </Hidden>
