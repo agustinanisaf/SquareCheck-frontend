@@ -4,7 +4,7 @@ import { Line } from "react-chartjs-2";
 
 export default function CardChart({ dataset, name, color }) {
   return (
-    <Card style={{ backgroundColor: `${color}`}}>
+    <Card style={{ backgroundColor: `${color}` }}>
       <CardContent>
         <Line
           height={10}
@@ -40,7 +40,12 @@ export default function CardChart({ dataset, name, color }) {
             },
           }}
         />
-        <Typography variant="h5" align="right" style={{paddingTop: ".5em"}} color="textSecondary">
+        <Typography
+          variant="h5"
+          align="right"
+          style={{ paddingTop: ".5em" }}
+          color="textSecondary"
+        >
           {name}
         </Typography>
       </CardContent>

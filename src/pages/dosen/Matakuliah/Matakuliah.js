@@ -103,9 +103,9 @@ export default function DetailMatakuliah() {
       ) : (
         <>
           {/* Chart */}
-          <Grid container item spacing={2}>
-            <Charts />
-          </Grid>
+          {/* <Grid container item spacing={2}>
+            <Charts id={id} />
+          </Grid> */}
 
           {/* List Hari matakuliah */}
           {/* <Grid container item> */}

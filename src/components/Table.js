@@ -17,7 +17,7 @@ const columns = [
   { id: "nama", label: "Nama", minWidth: 200, align: "center" },
   {
     id: "waktu",
-    label: "Waktu",
+    label: "Waktu / Status",
     minWidth: 100,
     align: "center",
     // format: (value) => value.toLocaleString("en-US"),
@@ -40,12 +40,10 @@ function createData(nrp, nama, waktu, status) {
       color = COLORS.status.telat;
       break;
     }
-    if (waktu === null)
-        waktu = 'Alpa'
-    else if (status === 'izin')
-        waktu = 'Izin'
-    else
-        waktu = moment(waktu).format('H:mm')
+    if (waktu === null && status === "hadir") waktu = "Hadir";
+    else if (status === "izin") waktu = "Izin";
+    else if (waktu === null) waktu = "Alpa";
+    else waktu = moment(waktu).format("H:mm");
     
   return { nrp, nama, waktu, color };
 }
@@ -79,7 +77,7 @@ export default function StickyHeadTable({ data }) {
 
     for (let key in data) {
       array.push(
-        createData(data[key].student.id, data[key].student.name, data[key].time, data[key].status)
+        createData(data[key].student.nrp, data[key].student.name, data[key].time, data[key].status)
         );
     }
 

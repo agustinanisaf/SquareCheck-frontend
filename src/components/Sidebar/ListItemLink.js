@@ -23,6 +23,7 @@ export default function ListItemLink(props) {
       .then((res) => {
         console.log(res);
         logout();
+        history.push('/');
       })
       .catch((err) => {
         console.log(err);
