@@ -111,7 +111,7 @@ export default function CardInfo({ data }) {
         />
       </Grid>
       <Hidden smDown>
-        <Grid item container xs={12}>
+        <Grid item container xs={12} style={{ paddingTop: '1.5em' }}>
           {summary.map((key, index) => (
             <Grid
               container
@@ -120,25 +120,29 @@ export default function CardInfo({ data }) {
               direction="column"
               xs={6}
               key={index}
-              component={Paper}
               //   square
               // spacing={3}
-              style={{ padding: "1em 0" }}
+              style={{ padding: ".3em"}}
             >
-              <Typography
-                align="center"
-                variant="h4"
-                style={{ color: `${key.color}`, fontWeight: "700" }}
-              >
-                {key.amount}
-              </Typography>
-              <Typography
-                gutterBottom
-                align="center"
-                style={{ fontSize: ".9em" }}
-              >
-                {key.name}
-              </Typography>
+              <Paper style={{padding: '1.3em'}}>
+                <Typography
+                  align="center"
+                  variant="h4"
+                  style={{
+                    color: `${key.color}`,
+                    fontWeight: "700",
+                  }}
+                >
+                  {key.amount}
+                </Typography>
+                <Typography
+                  gutterBottom
+                  align="center"
+                  style={{ fontSize: ".9em"}}
+                >
+                  {key.name}
+                </Typography>
+              </Paper>
             </Grid>
           ))}
         </Grid>

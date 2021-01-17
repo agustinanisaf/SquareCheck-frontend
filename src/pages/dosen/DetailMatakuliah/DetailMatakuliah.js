@@ -70,9 +70,9 @@ export default function DetailMatakuliah() {
         </Grid>
         <Grid container item xs={6} justify="flex-end">
           <Grid item>
-            <Button size="small" variant="contained" color="primary">
+            {/* <Button size="small" variant="contained" color="primary">
               Export PDF
-            </Button>
+            </Button> */}
           </Grid>
         </Grid>
       </Grid>
