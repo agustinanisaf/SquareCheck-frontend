@@ -72,7 +72,7 @@ export default function CardInfo({ data }) {
         case "alpa":
           alpaCounter++;
           break;
-        case "telat":
+        case "terlambat":
           telatCounter++;
           break;
         default:
@@ -111,7 +111,7 @@ export default function CardInfo({ data }) {
         />
       </Grid>
       <Hidden smDown>
-        <Grid item container xs={12} style={{ paddingTop: '1.5em' }}>
+        <Grid item container xs={12} style={{ paddingTop: "1.5em" }}>
           {summary.map((key, index) => (
             <Grid
               container
@@ -122,9 +122,9 @@ export default function CardInfo({ data }) {
               key={index}
               //   square
               // spacing={3}
-              style={{ padding: ".3em"}}
+              style={{ padding: ".3em" }}
             >
-              <Paper style={{padding: '1.3em'}}>
+              <Paper style={{ padding: "1.3em" }}>
                 <Typography
                   align="center"
                   variant="h4"
@@ -138,7 +138,7 @@ export default function CardInfo({ data }) {
                 <Typography
                   gutterBottom
                   align="center"
-                  style={{ fontSize: ".9em"}}
+                  style={{ fontSize: ".9em" }}
                 >
                   {key.name}
                 </Typography>
